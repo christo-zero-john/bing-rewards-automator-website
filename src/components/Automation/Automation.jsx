@@ -1,7 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
+import getSettings from "../../localstore/getSettings";
+import putSettings from "../../localstore/putSettings";
 
 function Automation(props) {
-  console.log(props);
+  if (!getSettings()) {
+    console.log("Stats not find: Saving stats to local storage");
+    putSettings({ count: 30, delay: 15 });
+  }
+
+  const [settings, changeSettings] = useState(getSettings());
 
   let stats = useState({
     visitorCount: 0,
@@ -11,7 +18,7 @@ function Automation(props) {
     totalDevices: 0,
   });
 
-  let searchLeft = 0;
+  const [searchLeft, setSearchLeft] = useState(settings.count);
 
   const people = [
     "Yang Kai",
@@ -51,8 +58,8 @@ function Automation(props) {
   const startSearchAutomation = async () => {
     console.log("Starting Search Automation");
     let jokes = new Array();
-    jokes = await getJokes(props.settings.settings.count);
-    console.log(props.settings.settings);
+    jokes = await getJokes(settings.count);
+    console.log(settings);
     stats.totalTimesAutomated++;
 
     console.log(jokes);
@@ -93,12 +100,13 @@ function Automation(props) {
     let x = 0;
     const sequence = () => {
       if (x < urlSet.length) {
-        props.iframeRef.current.src = `https://www.bing.com/search?q=${urlSet[x]}&qs=n&form=QBRE&sp=-1&ghc=1&lq=0&pq=bing+automator+websit&sc=8-21&sk=&cvid=0DE08CFD7AE74266A2FE8C42FF1644AA&ghsh=0&ghacc=0&ghpl=`;
+        props.iframeRef.current.src = `https://www.bing.com/search?FORM=U523DF&PC=U523&q=${urlSet[x]}?`;
         searchLeft--;
         stats.totalSearches++;
         stats.totalPointsMined += 3;
         x++;
-        setTimeout(sequence, props.settings.settings.delay * 1000);
+        searchLeft--;
+        setTimeout(sequence, settings.delay * 1000);
       }
     };
     sequence();
@@ -106,36 +114,60 @@ function Automation(props) {
 
   return (
     <div className="automation">
-      <p>Number of Searches: {props.settings.settings.count}</p>
+      <label for="count">
+        Number of Searches:
+        <input
+          id="count"
+          type="number"
+          min={1}
+          value={settings.count}
+          placeholder="Enter count"
+          onChange={(e) => {
+            if (e.target.value < 1) {
+              e.target.value = 1;
+            }
+            if (e.target.value > 90) {
+              e.target.value = 90;
+            }
+            console.log("changed count to ", e.target.value);
+            changeSettings((currentSettings) => ({
+              ...currentSettings,
+              count: e.target.value,
+            }));
+            setSearchLeft(e.target.value);
+          }}
+        />
+      </label>
+
+      <label for="delay">
+        Delay Between each Search:
+        <input
+          id="delay"
+          type="number"
+          value={settings.delay}
+          placeholder="Enter delay in seconds"
+          onChange={(e) => {
+            if (e.target.value < 5) {
+              e.target.value = 5;
+            }
+            if (e.target.value > 90) {
+              e.target.value = 90;
+            }
+            console.log("changed delay to ", e.target.value, "seconds");
+            changeSettings((currentSettings) => ({
+              ...currentSettings,
+              delay: e.target.value,
+            }));
+          }}
+        />
+        seconds
+      </label>
+
       <p>Number of Searches Left: {searchLeft}</p>
-      <p>Delay Between each Search:{props.settings.settings.delay} seconds</p>
 
       <button onClick={() => startSearchAutomation()}>
         START SEARCH AUTOMATION
       </button>
-      <p>You can change the default values below</p>
-      <input
-        type="text"
-        placeholder="Enter count"
-        onChange={(e) => {
-          console.log("changed count to ", e.target.value);
-          props.settings.changeSettings((currentSettings) => ({
-            ...currentSettings,
-            count: e.target.value,
-          }));
-        }}
-      />
-      <input
-        type="text"
-        placeholder="Enter delay in seconds"
-        onChange={(e) => {
-          console.log("changed delay to ", e.target.value, "seconds");
-          props.settings.changeSettings((currentSettings) => ({
-            ...currentSettings,
-            delay: e.target.value,
-          }));
-        }}
-      />
     </div>
   );
 }

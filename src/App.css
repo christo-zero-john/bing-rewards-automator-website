@@ -1,8 +1,9 @@
 iframe{
     margin: 0;
     padding: 0;
-    width: 98vw;
-    height: 90vh;
+    width: 101vw;
+    height: 101vh;
+    scale: 0.95;
 }
 
 
