@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "scripts": {
+    "preinstall": "npm install -g npm@8"
+  },
   "dependencies": {
     "bootstrap": "5.3.3",
     "react": "18.3.1",
