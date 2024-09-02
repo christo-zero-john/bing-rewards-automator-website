@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
-import Automation from "./components/Automation/automation";
+import Automation from "./components/Automation/Automation";
 import Stats from "./components/Statistics/Stats";
 
 function App() {
