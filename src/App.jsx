@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Automation from "./components/Automation/automation";
 import Stats from "./components/Statistics/Stats";
 
