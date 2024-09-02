@@ -16,7 +16,7 @@ Tired of manually collecting Microsoft Rewards points? Wish you could effortless
 
 **Don’t miss out on easy rewards!** Join thousands of satisfied users who are earning more with less effort. Start using our Bing Rewards Automator today and watch your points grow!
 
-👉 [Visit Our Website Now](#) to Get Started and Start Earning Faster!
+👉 [Visit Our Website Now](bing-rewards-automator-website.vercel.app) to Get Started and Start Earning Faster!
 
 ---
 
