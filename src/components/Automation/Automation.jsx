@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function Automation(props) {
   console.log(props);
