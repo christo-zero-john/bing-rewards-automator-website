@@ -13,9 +13,8 @@ function Stats() {
       totalDevices: 0,
     });
   }
-  let statistics = getStats();
-
-  const [stats, setStats] = useState(statistics);
+  
+  let stats = getStats();
 
   return (
     <div className="stats">

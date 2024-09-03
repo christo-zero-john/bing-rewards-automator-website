@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import getSettings from "../../localstore/getSettings";
 import putSettings from "../../localstore/putSettings";
+import getStats from "../../localstore/getStats";
+import putStats from "../../localstore/putStats";
 
 function Automation(props) {
   if (!getSettings()) {
@@ -10,15 +12,11 @@ function Automation(props) {
 
   const [settings, changeSettings] = useState(getSettings());
 
-  let stats = useState({
-    visitorCount: 0,
-    totalTimesAutomated: 0,
-    totalSearches: 0,
-    totalPointsMined: 0,
-    totalDevices: 0,
-  });
-
   const [searchLeft, setSearchLeft] = useState(settings.count);
+
+  useEffect(() => {
+    console.log("searchLeft Updated", searchLeft);
+  }, [searchLeft]);
 
   const people = [
     "Yang Kai",
@@ -60,7 +58,8 @@ function Automation(props) {
     let jokes = new Array();
     jokes = await getJokes(settings.count);
     console.log(settings);
-    stats.totalTimesAutomated++;
+    // stats.totalTimesAutomated++;
+    updateStats(1);
 
     console.log(jokes);
     for (let x = 0; x < jokes.length; x++) {
@@ -97,19 +96,31 @@ function Automation(props) {
 
   const sequenceSearchAutomation = async () => {
     console.log("Started with url set", urlSet);
+    setSearchLeft(searchLeft - 1);
     let x = 0;
     const sequence = () => {
       if (x < urlSet.length) {
         props.iframeRef.current.src = `https://www.bing.com/search?FORM=U523DF&PC=U523&q=${urlSet[x]}?`;
-        searchLeft--;
-        stats.totalSearches++;
-        stats.totalPointsMined += 3;
+        // stats.totalSearches++;
+        // stats.totalPointsMined += 3;
         x++;
-        searchLeft--;
         setTimeout(sequence, settings.delay * 1000);
       }
     };
     sequence();
+  };
+
+  const updateStats = (ctx) => {
+    switch (ctx) {
+      case 1: {
+        console.log("Incrementing totalTimesAutomated");
+        let stats = getStats();
+        // stats.totalTimesAutomated++;
+        putStats(stats);
+        console.log(getStats());
+        break;
+      }
+    }
   };
 
   return (
