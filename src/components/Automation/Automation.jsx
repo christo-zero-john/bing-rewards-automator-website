@@ -11,12 +11,7 @@ function Automation(props) {
   }
 
   const [settings, changeSettings] = useState(getSettings());
-
-  const [searchLeft, setSearchLeft] = useState(settings.count);
-
-  useEffect(() => {
-    console.log("searchLeft Updated", searchLeft);
-  }, [searchLeft]);
+  console.log(settings);
 
   const people = [
     "Yang Kai",
@@ -96,10 +91,14 @@ function Automation(props) {
 
   const sequenceSearchAutomation = async () => {
     console.log("Started with url set", urlSet);
-    setSearchLeft(searchLeft - 1);
     let x = 0;
     const sequence = () => {
-      if (x < urlSet.length) {
+      console.log("x ", x);
+      changeSettings((prevSettings) => ({
+        ...prevSettings,
+        searchLeft: settings.count - (x),
+      }));
+      if (x < settings.count) {
         props.iframeRef.current.src = `https://www.bing.com/search?FORM=U523DF&PC=U523&q=${urlSet[x]}?`;
         // stats.totalSearches++;
         // stats.totalPointsMined += 3;
@@ -144,8 +143,8 @@ function Automation(props) {
             changeSettings((currentSettings) => ({
               ...currentSettings,
               count: e.target.value,
+              searchLeft: e.target.value,
             }));
-            setSearchLeft(e.target.value);
           }}
         />
       </label>
@@ -174,7 +173,7 @@ function Automation(props) {
         seconds
       </label>
 
-      <p>Number of Searches Left: {searchLeft}</p>
+      <p>Number of Searches Left: {settings.searchLeft}</p>
 
       <button onClick={() => startSearchAutomation()}>
         START SEARCH AUTOMATION
