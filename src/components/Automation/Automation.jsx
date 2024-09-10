@@ -13,6 +13,8 @@ function Automation(props) {
   const [settings, changeSettings] = useState(getSettings());
   console.log(settings);
 
+  const [appData, setAppData] = useState({ automation: false });
+
   const people = [
     "Yang Kai",
     "Yu Ru Meng",
@@ -48,7 +50,15 @@ function Automation(props) {
 
   let urlSet = [];
 
+  useEffect(() => {
+    console.log("search left updated");
+    if (settings.searchLeft == 0) {
+      setAppData((prevData) => ({ ...prevData, automation: false }));
+    }
+  }, [settings.searchLeft]);
+
   const startSearchAutomation = async () => {
+    setAppData((prevData) => ({ ...prevData, automation: true }));
     console.log("Starting Search Automation");
     let jokes = new Array();
     jokes = await getJokes(settings.count);
@@ -96,7 +106,7 @@ function Automation(props) {
       console.log("x ", x);
       changeSettings((prevSettings) => ({
         ...prevSettings,
-        searchLeft: settings.count - (x),
+        searchLeft: settings.count - x,
       }));
       if (x < settings.count) {
         props.iframeRef.current.src = `https://www.bing.com/search?FORM=U523DF&PC=U523&q=${urlSet[x]}?`;
@@ -127,6 +137,7 @@ function Automation(props) {
       <label for="count">
         Number of Searches:
         <input
+          disabled={appData.automation === true}
           id="count"
           type="number"
           min={1}
@@ -152,6 +163,7 @@ function Automation(props) {
       <label for="delay">
         Delay Between each Search:
         <input
+          disabled={appData.automation === true}
           id="delay"
           type="number"
           value={settings.delay}
@@ -175,7 +187,12 @@ function Automation(props) {
 
       <p>Number of Searches Left: {settings.searchLeft}</p>
 
-      <button onClick={() => startSearchAutomation()}>
+      <button
+        onClick={(e) => {
+          startSearchAutomation();
+        }}
+        disabled={appData.automation === true}
+      >
         START SEARCH AUTOMATION
       </button>
     </div>
