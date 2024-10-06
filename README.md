@@ -1,6 +1,6 @@
 **Boost Your Earnings with Our Microsoft Rewards Automation Tool! 💰**
 
-Tired of manually collecting Microsoft Rewards points? Wish you could effortlessly maximize your daily points and get those gift cards, sweepstakes entries, or other rewards faster? Our Bing Rewards Automator is here to help! 
+Tired of manually collecting Microsoft Rewards points? Wish you could effortlessly maximize your daily points and get those gift cards, sweepstakes entries, or other rewards faster? Our Bing Rewards Automator is here to help!
 
 ✨ **Why Choose Our Automation Tool?**
 
@@ -21,3 +21,4 @@ Tired of manually collecting Microsoft Rewards points? Wish you could effortless
 ---
 
 **Disclaimer:** This tool automates tasks and may be against the terms of service of Microsoft Rewards. Use at your own risk.
+

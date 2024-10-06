@@ -1,19 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import getSettings from "../../localstore/getSettings";
 import putSettings from "../../localstore/putSettings";
-import getStats from "../../localstore/getStats";
-import putStats from "../../localstore/putStats";
+import InputForms from "../inputs/InputForms";
+import getJokes from "../../service-vendors/official-jokes-api";
+import updateStats from "../Statistics/updateStats";
 
 function Automation(props) {
+  // localStorage.clear();
+
+  // Fetch settings from local storage
   if (!getSettings()) {
-    console.log("Stats not find: Saving stats to local storage");
+    console.log("Saving Settings to local storage");
     putSettings({ count: 30, delay: 15 });
   }
 
   const [settings, changeSettings] = useState(getSettings());
-  console.log(settings);
+  console.log("settings", settings);
 
-  const [appData, setAppData] = useState({ automation: false });
+  const [appData, setAppData] = useState({
+    automation: props.automationStatus,
+  });
 
   const people = [
     "Yang Kai",
@@ -53,44 +59,32 @@ function Automation(props) {
   useEffect(() => {
     console.log("search left updated");
     if (settings.searchLeft == 0) {
-      setAppData((prevData) => ({ ...prevData, automation: false }));
+      props.setAutomationStatus(false);
     }
   }, [settings.searchLeft]);
 
   const startSearchAutomation = async () => {
-    setAppData((prevData) => ({ ...prevData, automation: true }));
+    // set automation property as true.
+    props.setAutomationStatus(true);
     console.log("Starting Search Automation");
+
     let jokes = new Array();
     jokes = await getJokes(settings.count);
-    console.log(settings);
+    // console.log(settings);
     // stats.totalTimesAutomated++;
     updateStats(1);
+    console.log("Jokes fetched successfully.");
 
-    console.log(jokes);
+    // Convert all jokes to search parameter format
     for (let x = 0; x < jokes.length; x++) {
-      jokes[x] = convertToUrl(jokes[x]);
+      urlSet.push(convertToSearchParameter(jokes[x]));
     }
-    console.log("converted to url format", jokes);
-    urlSet = jokes;
+    console.log("converted to url format.");
     console.log("Sequencing Search Automation");
     sequenceSearchAutomation();
   };
 
-  const getJokes = async (num) => {
-    console.log("Fetching Jokes from Jokes API");
-
-    let link = `https://official-joke-api.appspot.com/jokes/random/${num || 2}`;
-    console.log(link);
-    let response = await fetch(link);
-    let data = await response.json();
-    let jokes = new Array();
-    for (let i = 0; i < data.length; i++) {
-      jokes.push(data[i].setup + " " + data[i].punchline);
-    }
-    return jokes;
-  };
-
-  const convertToUrl = (text) => {
+  const convertToSearchParameter = (text) => {
     let textArray = text.split(" ");
     let link = new String("");
     for (let x = 0; x < textArray.length; x++) {
@@ -100,7 +94,7 @@ function Automation(props) {
   };
 
   const sequenceSearchAutomation = async () => {
-    console.log("Started with url set", urlSet);
+    console.log("Started automation with url set.");
     let x = 0;
     const sequence = () => {
       console.log("x ", x);
@@ -110,6 +104,8 @@ function Automation(props) {
       }));
       if (x < settings.count) {
         props.iframeRef.current.src = `https://www.bing.com/search?FORM=U523DF&PC=U523&q=${urlSet[x]}?`;
+        updateStats(2);
+        updateStats(3);
         // stats.totalSearches++;
         // stats.totalPointsMined += 3;
         x++;
@@ -119,79 +115,19 @@ function Automation(props) {
     sequence();
   };
 
-  const updateStats = (ctx) => {
-    switch (ctx) {
-      case 1: {
-        console.log("Incrementing totalTimesAutomated");
-        let stats = getStats();
-        // stats.totalTimesAutomated++;
-        putStats(stats);
-        console.log(getStats());
-        break;
-      }
-    }
-  };
-
   return (
     <div className="automation">
-      <label for="count">
-        Number of Searches:
-        <input
-          disabled={appData.automation === true}
-          id="count"
-          type="number"
-          min={1}
-          value={settings.count}
-          placeholder="Enter count"
-          onChange={(e) => {
-            if (e.target.value < 1) {
-              e.target.value = 1;
-            }
-            if (e.target.value > 90) {
-              e.target.value = 90;
-            }
-            console.log("changed count to ", e.target.value);
-            changeSettings((currentSettings) => ({
-              ...currentSettings,
-              count: e.target.value,
-              searchLeft: e.target.value,
-            }));
-          }}
-        />
-      </label>
-
-      <label for="delay">
-        Delay Between each Search:
-        <input
-          disabled={appData.automation === true}
-          id="delay"
-          type="number"
-          value={settings.delay}
-          placeholder="Enter delay in seconds"
-          onChange={(e) => {
-            if (e.target.value < 5) {
-              e.target.value = 5;
-            }
-            if (e.target.value > 90) {
-              e.target.value = 90;
-            }
-            console.log("changed delay to ", e.target.value, "seconds");
-            changeSettings((currentSettings) => ({
-              ...currentSettings,
-              delay: e.target.value,
-            }));
-          }}
-        />
-        seconds
-      </label>
+      <InputForms
+        automationStatus={props.automationStatus}
+        settings={settings}
+        changeSettings={changeSettings}
+      />
 
       <p>Number of Searches Left: {settings.searchLeft}</p>
 
       <button
-        onClick={(e) => {
-          startSearchAutomation();
-        }}
-        disabled={appData.automation === true}
+        onClick={startSearchAutomation}
+        disabled={props.automationStatus}
       >
         START SEARCH AUTOMATION
       </button>
