@@ -5,6 +5,8 @@ import {
   updateGlobalStats,
   fetchGlobalStats,
 } from "../../service-vendors/firebase.js";
+import UserStats from "./user-stats/UserStats.jsx";
+import GlobalStats from "./global-stats/GlobalStats.jsx";
 
 function Stats({ automationStatus }) {
   let dummyStats = {
@@ -53,12 +55,8 @@ function Stats({ automationStatus }) {
 
   return (
     <div className="stats">
-      <h2>Statistics</h2>
-      <p>Total Visitors: {stats.visitorCount || 0} </p>
-      <p>Total Automations Performed: {stats.totalTimesAutomated || 0} </p>
-      <p>Total Searches performed: {stats.totalSearches || 0} </p>
-      <p>Total Points Mined: {stats.totalPointsMined || 0}</p>
-      <p>Total devices: {stats.totalDevices || 0}</p>
+      <UserStats stats={stats} />
+      <GlobalStats stats={stats} />
     </div>
   );
 }
