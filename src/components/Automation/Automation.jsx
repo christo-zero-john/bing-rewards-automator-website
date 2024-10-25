@@ -72,6 +72,7 @@ function Automation(props) {
   const startSearchAutomation = async () => {
     // set automation property as true.
     props.setAutomationStatus(true);
+    console.log(props.automationStatus, settings);
     console.log("Starting Search Automation");
 
     let jokes = new Array();
