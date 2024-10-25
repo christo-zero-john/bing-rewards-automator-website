@@ -15,15 +15,17 @@ function App() {
         iframeRef={iframeRef}
       />
 
-      <label className="" id="showStats">
-        Show Statistics
-        <input type="checkbox" className="" id="showStats" />
-      </label>
+      <div className="">
+        <label className="m-3 fs-5" id="showStats">
+          Show Statistics
+          <input type="checkbox" className="m-2 checkbox" id="showStats" />
+        </label>
 
-      <label className="" id="showSearchResults">
-        Show Search Results
-        <input type="checkbox" className="" id="showSearchResults" />
-      </label>
+        <label className="m-3 fs-5" id="showSearchResults">
+          Show Search Results
+          <input type="checkbox" className="m-2 checkbox" id="showSearchResults" />
+        </label>
+      </div>
 
       <Stats automationStatus={automationStatus} />
 
