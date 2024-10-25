@@ -9,6 +9,8 @@ import Settings from "../settings/Settings";
 import SearchLeft from "./SearchLeft";
 import NextSearchIn from "./NextSearchIn";
 
+import "../../styles/automations.css";
+
 function Automation(props) {
   // localStorage.clear();
 
@@ -136,20 +138,33 @@ function Automation(props) {
   return (
     <div className="automation">
       <Navbar />
-      <Settings
-        automationStatus={settings.is_automating}
-        settings={settings}
-        updateSettings={updateSettings}
-      />
-      <SearchLeft settings={settings} />
-      <NextSearchIn
-        settings={settings}
-        onSearchComplete={handleSearchComplete}
-      />
 
-      <button onClick={startSearchAutomation} disabled={settings.is_automating}>
-        START SEARCH AUTOMATION
-      </button>
+      <div className="row justify-content-around border border-dark">
+        <div className="col-5 border-end border-dark settings">
+          <h1 className="">Settings</h1>
+          <Settings
+            automationStatus={settings.is_automating}
+            settings={settings}
+            updateSettings={updateSettings}
+          />
+
+          <button className="btn btn-success col-11 m-3 mx-auto text-center"
+            onClick={startSearchAutomation}
+            disabled={settings.is_automating}
+          >
+            START SEARCHING
+          </button>
+        </div>
+
+        <div className="col-5 border-end">
+          <h1 className="">Automation</h1>
+          <SearchLeft settings={settings} />
+          <NextSearchIn
+            settings={settings}
+            onSearchComplete={handleSearchComplete}
+          />
+        </div>
+      </div>
     </div>
   );
 }
