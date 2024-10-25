@@ -1,6 +1,6 @@
 import React from "react";
 
-function InputForms({ automationStatus, settings, changeSettings }) {
+function InputForms({ settings, updateSettings }) {
   const handleSearchCountInput = (e) => {
     if (e.target.value < 1) {
       e.target.value = 1;
@@ -9,7 +9,7 @@ function InputForms({ automationStatus, settings, changeSettings }) {
       e.target.value = 90;
     }
     console.log("changed count to ", e.target.value);
-    changeSettings((currentSettings) => ({
+    updateSettings((currentSettings) => ({
       ...currentSettings,
       count: e.target.value,
       searchLeft: e.target.value,
@@ -21,7 +21,7 @@ function InputForms({ automationStatus, settings, changeSettings }) {
       <label htmlFor="count">
         Number of Searches:
         <input
-          disabled={automationStatus}
+          disabled={settings.is_automating}
           id="count"
           type="number"
           min={1}
@@ -34,7 +34,7 @@ function InputForms({ automationStatus, settings, changeSettings }) {
       <label htmlFor="delay">
         Delay Between each Search:
         <input
-          disabled={automationStatus}
+          disabled={settings.is_automating}
           id="delay"
           type="number"
           value={settings.delay}
@@ -47,7 +47,7 @@ function InputForms({ automationStatus, settings, changeSettings }) {
               e.target.value = 90;
             }
             console.log("changed delay to ", e.target.value, "seconds");
-            changeSettings((currentSettings) => ({
+            updateSettings((currentSettings) => ({
               ...currentSettings,
               delay: e.target.value,
             }));
