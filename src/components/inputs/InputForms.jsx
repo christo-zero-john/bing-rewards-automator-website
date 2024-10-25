@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/automations.css";
 
 function InputForms({ settings, updateSettings }) {
   const handleSearchCountInput = (e) => {
