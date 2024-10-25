@@ -8,14 +8,25 @@ function App() {
   const iframeRef = useRef(null);
   const [automationStatus, setAutomationStatus] = useState(false);
   return (
-    <div>
+    <div className="text-uppercase">
       <Automation
         automationStatus={automationStatus}
         setAutomationStatus={setAutomationStatus}
         iframeRef={iframeRef}
       />
 
+      <label className="" id="showStats">
+        Show Statistics
+        <input type="checkbox" className="" id="showStats" />
+      </label>
+
+      <label className="" id="showSearchResults">
+        Show Search Results
+        <input type="checkbox" className="" id="showSearchResults" />
+      </label>
+
       <Stats automationStatus={automationStatus} />
+
       <iframe
         className="webView"
         ref={iframeRef}
