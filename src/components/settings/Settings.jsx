@@ -1,12 +1,12 @@
 import React from "react";
 import InputForms from "../inputs/InputForms";
 
-function Settings({ automationStatus, settings, changeSettings }) {
+function Settings({ automationStatus, settings, updateSettings }) {
   return (
     <InputForms
       automationStatus={automationStatus}
       settings={settings}
-      changeSettings={changeSettings}
+      updateSettings={updateSettings}
     />
   );
 }
