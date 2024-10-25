@@ -1,9 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import getSettings from "../../localstore/getSettings";
 import putSettings from "../../localstore/putSettings";
 import InputForms from "../inputs/InputForms";
 import getJokes from "../../service-vendors/official-jokes-api";
 import updateStats from "../Statistics/updateStats";
+import Navbar from "../common/Navbar";
+import Settings from "../settings/Settings";
+import SearchLeft from "./SearchLeft";
+import NextSearchIn from "./NextSearchIn";
 
 function Automation(props) {
   // localStorage.clear();
@@ -14,12 +18,14 @@ function Automation(props) {
     putSettings({ count: 30, delay: 15 });
   }
 
-  const [settings, changeSettings] = useState(getSettings());
+  const [settings, updateSettings] = useState(getSettings());
   console.log("settings", settings);
-
-  const [appData, setAppData] = useState({
-    automation: props.automationStatus,
-  });
+  useEffect(() => {
+    updateSettings({
+      ...settings,
+      is_automating: props.automationStatus,
+    });
+  }, []);
 
   const people = [
     "Yang Kai",
@@ -98,7 +104,7 @@ function Automation(props) {
     let x = 0;
     const sequence = () => {
       console.log("x ", x);
-      changeSettings((prevSettings) => ({
+      updateSettings((prevSettings) => ({
         ...prevSettings,
         searchLeft: settings.count - x,
       }));
@@ -115,20 +121,32 @@ function Automation(props) {
     sequence();
   };
 
+  const handleSearchComplete = useCallback(() => {
+    if (settings.searchLeft > 0) {
+      updateSettings({
+        ...settings,
+        searchLeft: settings.searchLeft - 1,
+      });
+      // Here, you would also trigger the actual search functionality
+      console.log("Performing search...");
+    }
+  }, [settings, updateSettings]);
+
   return (
     <div className="automation">
-      <InputForms
-        automationStatus={props.automationStatus}
+      <Navbar />
+      <Settings
+        automationStatus={settings.is_automating}
         settings={settings}
-        changeSettings={changeSettings}
+        updateSettings={updateSettings}
+      />
+      <SearchLeft settings={settings} />
+      <NextSearchIn
+        settings={settings}
+        onSearchComplete={handleSearchComplete}
       />
 
-      <p>Number of Searches Left: {settings.searchLeft}</p>
-
-      <button
-        onClick={startSearchAutomation}
-        disabled={props.automationStatus}
-      >
+      <button onClick={startSearchAutomation} disabled={settings.is_automating}>
         START SEARCH AUTOMATION
       </button>
     </div>
