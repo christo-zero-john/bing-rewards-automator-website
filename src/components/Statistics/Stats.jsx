@@ -54,9 +54,13 @@ function Stats({ automationStatus }) {
   }, []);
 
   return (
-    <div className="stats">
-      <UserStats stats={stats} />
-      <GlobalStats stats={stats} />
+    <div className="stats row border border-dark p-3">
+      <div className="col-5 mx-auto border-end border-dark">
+        <UserStats stats={stats} />
+      </div>
+      <div className="col-5 mx-auto">
+        <GlobalStats stats={stats} />
+      </div>
     </div>
   );
 }
