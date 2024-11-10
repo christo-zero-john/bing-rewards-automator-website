@@ -1,7 +1,6 @@
-import React, { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import getSettings from "../../localstore/getSettings";
 import putSettings from "../../localstore/putSettings";
-import InputForms from "../inputs/InputForms";
 import getJokes from "../../service-vendors/official-jokes-api";
 import updateStats from "../Statistics/updateStats";
 import Navbar from "../common/Navbar";
@@ -140,7 +139,7 @@ function Automation(props) {
       <Navbar />
 
       <div className="row justify-content-around border border-dark">
-        <div className="col-5 border-end border-dark settings">
+        <div className="col-12 col-md-5 border-end border-dark settings">
           <h1 className="">Settings</h1>
           <Settings
             automationStatus={settings.is_automating}
@@ -156,7 +155,7 @@ function Automation(props) {
           </button>
         </div>
 
-        <div className="col-5 border-end">
+        <div className="col-12 col-md-5 border-end">
           <h1 className="">Automation</h1>
           <SearchLeft settings={settings} />
           <NextSearchIn
