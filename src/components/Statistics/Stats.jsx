@@ -55,10 +55,10 @@ function Stats({ automationStatus }) {
 
   return (
     <div className="stats row border border-dark p-3">
-      <div className="col-5 mx-auto border-end border-dark">
+      <div className="col-12 col-md-5 mx-auto border-end border-dark">
         <UserStats stats={stats} />
       </div>
-      <div className="col-5 mx-auto">
+      <div className="col-12 col-md-5 mx-auto">
         <GlobalStats stats={stats} />
       </div>
     </div>
@@ -66,3 +66,5 @@ function Stats({ automationStatus }) {
 }
 
 export default Stats;
+
+
