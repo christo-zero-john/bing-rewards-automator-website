@@ -2,16 +2,15 @@ import { useState, useCallback, useEffect } from "react";
 import getSettings from "../../localstore/get-settings";
 import putSettings from "../../localstore/put-settings";
 import getJokes from "../../service-vendors/official-jokes-api";
-import updateStats from "../statistics/update-stats";
+import updateStats from "../../modules/update-stats";
 import Settings from "../settings/settings";
-import NextSearchIn from "./mining-stats/next-search-in";
 
 import "../../styles/automations.css";
 import btnImage from "../../images/start-automation.png";
 import settingsImg from "../../images/settings.png";
 import MiningStats from "./mining-stats/mining-stats";
 
-function Automation(props) {
+function Automation({ iframeRef, bool, setBool }) {
   // localStorage.clear();
 
   // Fetch settings from local storage
@@ -56,10 +55,6 @@ function Automation(props) {
     "Dugu Ya",
   ];
 
-  const [bool, setBool] = useState({
-    showSettings: false,
-    is_automating: false,
-  });
   useEffect(() => {
     console.log("BOOL: ", bool);
   }, [bool]);
@@ -148,7 +143,6 @@ function Automation(props) {
             // SHow or hide settings
             bool.showSettings && (
               <Settings
-                automationStatus={bool.is_automating}
                 settings={settings}
                 updateSettings={updateSettings}
                 bool={bool}
@@ -179,7 +173,7 @@ function Automation(props) {
             />
           </div>
         </div>
-        
+
         <MiningStats
           settings={settings}
           handleSearchComplete={handleSearchComplete}
