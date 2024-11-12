@@ -21,9 +21,9 @@ function App() {
         iframeRef={iframeRef}
       />
 
-      <div className="">
+      <div className="checkboxes">
         <label className="m-3 fs-5" id="showStats">
-          Show Statistics
+          My Stats
           <input type="checkbox" className="m-2 checkbox" id="showStats" />
         </label>
 
