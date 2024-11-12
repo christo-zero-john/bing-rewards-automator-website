@@ -1,12 +1,12 @@
 import { useState, useCallback, useEffect } from "react";
-import getSettings from "../../localstore/getSettings";
-import putSettings from "../../localstore/putSettings";
+import getSettings from "../../localstore/get-settings";
+import putSettings from "../../localstore/put-settings";
 import getJokes from "../../service-vendors/official-jokes-api";
-import updateStats from "../Statistics/updateStats";
-import Navbar from "../common/Navbar";
-import Settings from "../settings/Settings";
-import SearchLeft from "./SearchLeft";
-import NextSearchIn from "./NextSearchIn";
+import updateStats from "../statistics/update-stats";
+import Navbar from "../common/navbar";
+import Settings from "../settings/settings";
+import SearchLeft from "./search-left";
+import NextSearchIn from "./next-search-in";
 
 import "../../styles/automations.css";
 
