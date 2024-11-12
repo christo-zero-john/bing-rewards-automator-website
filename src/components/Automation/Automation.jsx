@@ -4,12 +4,12 @@ import putSettings from "../../localstore/put-settings";
 import getJokes from "../../service-vendors/official-jokes-api";
 import updateStats from "../statistics/update-stats";
 import Settings from "../settings/settings";
-import SearchLeft from "./search-left";
-import NextSearchIn from "./next-search-in";
+import NextSearchIn from "./mining-stats/next-search-in";
 
 import "../../styles/automations.css";
 import btnImage from "../../images/start-automation.png";
 import settingsImg from "../../images/settings.png";
+import MiningStats from "./mining-stats/mining-stats";
 
 function Automation(props) {
   // localStorage.clear();
@@ -143,7 +143,7 @@ function Automation(props) {
   return (
     <div className="automation">
       <div className="row justify-content-around col-12 mx-auto">
-        <div className="col-12 col-md-6 border-end border-dark settings">
+        <div className="col-12 col-md-7 border-end border-dark settings">
           {
             // SHow or hide settings
             bool.showSettings && (
@@ -151,13 +151,14 @@ function Automation(props) {
                 automationStatus={bool.is_automating}
                 settings={settings}
                 updateSettings={updateSettings}
+                bool={bool}
               />
             )
           }
 
-          <div className="">
+          <div className=" mx-auto">
             <button
-              className="start-btn btn btn-light col-11 m-2 m-md-0 text-start px-4 d-inline-block"
+              className="start-btn btn btn-light col-10 text-start px-4 d-inline-block"
               onClick={startSearchAutomation}
               disabled={bool.is_automating}
             >
@@ -166,7 +167,7 @@ function Automation(props) {
                 alt="Start Automation Image"
                 className="icons-main"
               />
-              <span className="">
+              <span className="ms-3">
                 {(!bool.is_automating && "START SEARCHING") || "Mining Points"}{" "}
               </span>
             </button>
@@ -178,15 +179,11 @@ function Automation(props) {
             />
           </div>
         </div>
-
-        <div className="col-11 col-md-5 border-end">
-          <h1 className="">Automation</h1>
-          <SearchLeft settings={settings} />
-          <NextSearchIn
-            settings={settings}
-            onSearchComplete={handleSearchComplete}
-          />
-        </div>
+        
+        <MiningStats
+          settings={settings}
+          handleSearchComplete={handleSearchComplete}
+        />
       </div>
     </div>
   );
