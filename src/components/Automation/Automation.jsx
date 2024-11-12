@@ -3,12 +3,13 @@ import getSettings from "../../localstore/get-settings";
 import putSettings from "../../localstore/put-settings";
 import getJokes from "../../service-vendors/official-jokes-api";
 import updateStats from "../statistics/update-stats";
-import Navbar from "../common/navbar";
 import Settings from "../settings/settings";
 import SearchLeft from "./search-left";
 import NextSearchIn from "./next-search-in";
 
 import "../../styles/automations.css";
+import btnImage from "../../images/start-automation.png";
+import settingsImg from "../../images/settings.png";
 
 function Automation(props) {
   // localStorage.clear();
@@ -21,12 +22,6 @@ function Automation(props) {
 
   const [settings, updateSettings] = useState(getSettings());
   console.log("settings", settings);
-  useEffect(() => {
-    updateSettings({
-      ...settings,
-      is_automating: props.automationStatus,
-    });
-  }, []);
 
   const people = [
     "Yang Kai",
@@ -61,6 +56,14 @@ function Automation(props) {
     "Dugu Ya",
   ];
 
+  const [bool, setBool] = useState({
+    showSettings: false,
+    is_automating: false,
+  });
+  useEffect(() => {
+    console.log("BOOL: ", bool);
+  }, [bool]);
+
   let urlSet = [];
 
   useEffect(() => {
@@ -72,8 +75,7 @@ function Automation(props) {
 
   const startSearchAutomation = async () => {
     // set automation property as true.
-    props.setAutomationStatus(true);
-    console.log(props.automationStatus, settings);
+    setBool({ ...bool, is_automating: true });
     console.log("Starting Search Automation");
 
     let jokes = new Array();
@@ -134,28 +136,50 @@ function Automation(props) {
     }
   }, [settings, updateSettings]);
 
+  function openHideSettings() {
+    setBool({ ...bool, showSettings: !bool.showSettings });
+  }
+
   return (
     <div className="automation">
-      <Navbar />
+      <div className="row justify-content-around col-12 mx-auto">
+        <div className="col-12 col-md-6 border-end border-dark settings">
+          {
+            // SHow or hide settings
+            bool.showSettings && (
+              <Settings
+                automationStatus={bool.is_automating}
+                settings={settings}
+                updateSettings={updateSettings}
+              />
+            )
+          }
 
-      <div className="row justify-content-around border border-dark">
-        <div className="col-12 col-md-5 border-end border-dark settings">
-          <h1 className="">Settings</h1>
-          <Settings
-            automationStatus={settings.is_automating}
-            settings={settings}
-            updateSettings={updateSettings}
-          />
-
-          <button className="btn btn-success col-11 m-3 mx-auto text-center"
-            onClick={startSearchAutomation}
-            disabled={settings.is_automating}
-          >
-            START SEARCHING
-          </button>
+          <div className="">
+            <button
+              className="start-btn btn btn-light col-11 m-2 m-md-0 text-start px-4 d-inline-block"
+              onClick={startSearchAutomation}
+              disabled={bool.is_automating}
+            >
+              <img
+                src={btnImage}
+                alt="Start Automation Image"
+                className="icons-main"
+              />
+              <span className="">
+                {(!bool.is_automating && "START SEARCHING") || "Mining Points"}{" "}
+              </span>
+            </button>
+            <img
+              src={settingsImg}
+              alt=""
+              className="settings-icon col-1 px-1  d-inline-block"
+              onClick={openHideSettings}
+            />
+          </div>
         </div>
 
-        <div className="col-12 col-md-5 border-end">
+        <div className="col-11 col-md-5 border-end">
           <h1 className="">Automation</h1>
           <SearchLeft settings={settings} />
           <NextSearchIn
