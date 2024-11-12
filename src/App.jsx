@@ -2,48 +2,61 @@ import { useRef, useState } from "react";
 import "./App.css";
 import Navbar from "./components/common/Navbar";
 import Automation from "./components/automation/automation";
-import Stats from "./components/statistics/stats";
 import Visitors from "./components/visitors-count/visitors";
 import GlobalStats from "./components/global-stats/global-stats";
+import UserStats from "./components/user-stats/user-stats";
 
 function App() {
   // localStorage.clear();
   const iframeRef = useRef(null);
-  const [automationStatus, setAutomationStatus] = useState(false);
+  const [bool, setBool] = useState({
+    showSettings: false,
+    is_automating: false,
+    showSearchResult: false,
+    showMyStats: false,
+  });
+
   return (
     <div className="bg-dark text-light text-uppercase en-Oxanium">
       <Navbar />
       <Visitors />
       <GlobalStats />
-      <Automation
-        automationStatus={automationStatus}
-        setAutomationStatus={setAutomationStatus}
-        iframeRef={iframeRef}
-      />
+      <Automation iframeRef={iframeRef} bool={bool} setBool={setBool} />
 
       <div className="checkboxes">
-        <label className="m-3 fs-5" id="showStats">
+        <label className="m-3 fs-5 fw-100" id="showStats">
           My Stats
-          <input type="checkbox" className="m-2 checkbox" id="showStats" />
+          <input
+            type="checkbox"
+            className="m-2 checkbox"
+            onClick={(e) => {
+              setBool({ ...bool, showMyStats: e.target.checked });
+            }}
+          />
         </label>
 
-        <label className="m-3 fs-5" id="showSearchResults">
+        <label className="m-3 fs-5 fw-100" id="showSearchResults">
           Show Search Results
           <input
             type="checkbox"
             className="m-2 checkbox"
-            id="showSearchResults"
+            onClick={(e) => {
+              setBool({ ...bool, showSearchResult: e.target.checked });
+            }}
           />
         </label>
+        <p className="text-center">SHOW LOGS and know whats happening</p>
       </div>
 
-      <Stats automationStatus={automationStatus} />
+      {bool.showMyStats && <UserStats />}
 
-      <iframe
-        className="webView"
-        ref={iframeRef}
-        src="https://www.bing.com/search?FORM=U523DF&PC=U523&q=bing-rewards-automator-website.vercel.app"
-      ></iframe>
+      {bool.showSearchResult && (
+        <iframe
+          className="webView w-100 no-scrollbar"
+          ref={iframeRef}
+          src="https://www.bing.com/search?FORM=U523DF&PC=U523&q=bing-rewards-automator-website.vercel.app"
+        ></iframe>
+      )}
     </div>
   );
 }
