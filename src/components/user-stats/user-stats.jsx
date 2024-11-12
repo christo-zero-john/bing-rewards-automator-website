@@ -1,9 +1,8 @@
-import GlobalStatsCard from "./stats-card";
+import UserStatsCard from "./stats-card";
 import deviceImage from "../../images/devices-count.png";
 import automationsImage from "../../images/automations-count.png";
 import searchesImage from "../../images/searches-count.png";
 import pointsMinedImage from "../../images/start-automation.png";
-import { useEffect } from "react";
 
 function UserStats() {
   let count = {
@@ -14,26 +13,20 @@ function UserStats() {
   };
 
   return (
-    <div className="d-flex flex-row overflow-auto no-scrollbar">
-      <GlobalStatsCard
-        title="devices"
-        image={deviceImage}
-        count={count.deviceCount}
-      />
-
-      <GlobalStatsCard
+    <div className="d-flex flex-row overflow-auto no-scrollbar user-stats">
+      <UserStatsCard
         title="automations"
         image={automationsImage}
         count={count.automationsCount}
       />
 
-      <GlobalStatsCard
+      <UserStatsCard
         title="searches"
         image={searchesImage}
         count={count.searchesCount}
       />
 
-      <GlobalStatsCard
+      <UserStatsCard
         title="pointsMined"
         image={pointsMinedImage}
         count={count.pointsMined}
