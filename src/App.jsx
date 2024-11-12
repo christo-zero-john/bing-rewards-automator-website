@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./App.css";
-import Automation from "./components/Automation/Automation";
-import Stats from "./components/Statistics/Stats";
+import Automation from "./components/automation/automation";
+import Stats from "./components/statistics/stats";
 
 function App() {
   // localStorage.clear();
