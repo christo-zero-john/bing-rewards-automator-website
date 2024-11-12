@@ -67,6 +67,12 @@ input[type="number"] {
   border-radius: 50%;
 }
 
+.user-stats{
+  background:linear-gradient(262.39deg, #2d2d2d 0.39%, #353535 99.61%);
+  margin: 10px;
+  border-radius: 8px;
+}
+
 /* Styles for medium screens */
 @media (min-width: 768px) {
   .icons-main {
