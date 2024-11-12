@@ -1,7 +1,7 @@
 import React from "react";
 import "../../images/search-logo.png";
-import TotalVisitors from "../Statistics/global-stats/TotalVisitors";
-import TotalPointsMined from "../Statistics/global-stats/PointsMined";
+import TotalVisitors from "../Statistics/global-stats/total-visitors";
+import TotalPointsMined from "../Statistics/global-stats/points-mined";
 
 function Navbar() {
   return (
