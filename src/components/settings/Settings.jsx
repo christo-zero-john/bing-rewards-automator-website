@@ -19,8 +19,8 @@ function Settings({ settings, updateSettings, bool }) {
   return (
     <div className="mb-3">
       <p className="fs-3 text-center m-3 ">Settings</p>
-      <div className="mx-auto w-fit my-5">
-        <label className="d-block mx-3 my-2 fs-4" htmlFor="count">
+      <div className="mx-auto w-fit mb-5">
+        <label className="d-block mx-3 my-2 " htmlFor="count">
           Count
           <input
             disabled={bool.is_automating}
@@ -33,7 +33,7 @@ function Settings({ settings, updateSettings, bool }) {
           />
         </label>
 
-        <label className="d-block mx-3 my-2 fs-4" htmlFor="delay">
+        <label className="d-block mx-3 my-2 " htmlFor="delay">
           Delay
           <input
             disabled={bool.is_automating}
