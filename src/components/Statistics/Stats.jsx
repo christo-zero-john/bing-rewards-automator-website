@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import getStats from "../../localstore/getStats.js";
-import putStats from "../../localstore/putStats.js";
+import getStats from "../../localstore/get-stats.js";
+import putStats from "../../localstore/put-stats.js";
 import {
   updateGlobalStats,
   fetchGlobalStats,
 } from "../../service-vendors/firebase.js";
-import UserStats from "./user-stats/UserStats.jsx";
-import GlobalStats from "./global-stats/GlobalStats.jsx";
+import UserStats from "./user-stats/user-stats.jsx";
+import GlobalStats from "./global-stats/global-stats.jsx";
 
 function Stats({ automationStatus }) {
   let dummyStats = {
@@ -41,11 +41,6 @@ function Stats({ automationStatus }) {
     putStats(data);
     // console.log("New Data: ", data);
     updateGlobalStats(data);
-    setStatus(getStats());
-  }
-
-  function reRenderStats() {
-    console.log("Re Rendering stats component");
     setStatus(getStats());
   }
 
