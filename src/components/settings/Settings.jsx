@@ -1,5 +1,5 @@
 import React from "react";
-import InputForms from "../inputs/InputForms";
+import InputForms from "../inputs/input-forms";
 
 function Settings({ automationStatus, settings, updateSettings }) {
   return (
