@@ -1,4 +1,4 @@
-function GlobalStatsCard({ title, image, count }) {
+function UserStatsCard({ title, image, count }) {
   return (
     <div className="global-stats-card w-fit d-inline-block column">
       <section className="text-center d-inline-block">
@@ -10,4 +10,4 @@ function GlobalStatsCard({ title, image, count }) {
   );
 }
 
-export default GlobalStatsCard;
+export default UserStatsCard;
