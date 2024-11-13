@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import "./App.css";
 import Navbar from "./components/common/Navbar";
-import Automation from "./components/automation/Automation";
+import Automation from "./components/Automation/Automation";
 import Visitors from "./components/visitors-count/visitors";
 import GlobalStats from "./components/global-stats/global-stats";
 import UserStats from "./components/user-stats/user-stats";
