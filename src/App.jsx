@@ -1,10 +1,12 @@
 import { useRef, useState } from "react";
 import "./App.css";
 import Navbar from "./components/common/Navbar";
-import Automation from "./components/automation/automation";
+import Automation from "./components/automation/Automation";
 import Visitors from "./components/visitors-count/visitors";
 import GlobalStats from "./components/global-stats/global-stats";
 import UserStats from "./components/user-stats/user-stats";
+
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   // localStorage.clear();
@@ -18,6 +20,7 @@ function App() {
 
   return (
     <div className="bg-dark text-light text-uppercase en-Oxanium">
+      <Analytics />
       <Navbar />
       <Visitors />
       <GlobalStats />
