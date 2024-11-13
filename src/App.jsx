@@ -50,13 +50,13 @@ function App() {
 
       {bool.showMyStats && <UserStats />}
 
-      {bool.showSearchResult && (
-        <iframe
-          className="webView w-100 no-scrollbar"
-          ref={iframeRef}
-          src="https://www.bing.com/search?FORM=U523DF&PC=U523&q=bing-rewards-automator-website.vercel.app"
-        ></iframe>
-      )}
+      <iframe
+        className={`${
+          !bool.showSearchResult && "hidden"
+        } webView w-100 no-scrollbar`}
+        ref={iframeRef}
+        src="https://www.bing.com/search?FORM=U523DF&PC=U523&q=bing-rewards-automator-website.vercel.app"
+      ></iframe>
     </div>
   );
 }
