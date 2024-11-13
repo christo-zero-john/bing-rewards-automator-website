@@ -108,7 +108,7 @@ function Automation({ iframeRef, bool, setBool }) {
         searchLeft: settings.count - x,
       }));
       if (x < settings.count) {
-        props.iframeRef.current.src = `https://www.bing.com/search?FORM=U523DF&PC=U523&q=${urlSet[x]}?`;
+        iframeRef.current.src = `https://www.bing.com/search?FORM=U523DF&PC=U523&q=${urlSet[x]}?`;
         updateStats(2);
         updateStats(3);
         // stats.totalSearches++;
