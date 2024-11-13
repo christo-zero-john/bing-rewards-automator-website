@@ -3,7 +3,7 @@ import getSettings from "../../localstore/get-settings";
 import putSettings from "../../localstore/put-settings";
 import getJokes from "../../service-vendors/official-jokes-api";
 import updateStats from "../../modules/update-stats";
-import Settings from "../settings/settings";
+import Settings from "../settings/Settings";
 
 import "../../styles/automations.css";
 import btnImage from "../../images/start-automation.png";
