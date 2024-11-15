@@ -10,6 +10,8 @@ import btnImage from "../../images/start-automation.png";
 import settingsImg from "../../images/settings.png";
 import MiningStats from "./mining-stats/mining-stats";
 
+import { getUserStats, updateUserStats } from "../../modules/manage/user-stats";
+
 function Automation({ iframeRef, bool, setBool }) {
   // localStorage.clear();
 
@@ -55,23 +57,30 @@ function Automation({ iframeRef, bool, setBool }) {
     "Dugu Ya",
   ];
 
-  useEffect(() => {
-    console.log("BOOL: ", bool);
-  }, [bool]);
+  // useEffect(() => {
+  //   console.log("BOOL: ", bool);
+  // }, [bool]);
 
   let urlSet = [];
 
   useEffect(() => {
-    console.log("search left updated");
+    // console.log("search left updated");
     if (settings.searchLeft == 0) {
       props.setAutomationStatus(false);
     }
   }, [settings.searchLeft]);
 
+  const [userStats, setUserStats] = useState(getUserStats());
+  useEffect(() => {
+    console.log("User satistics Updated: ", userStats);
+  }, [userStats]);
+
   const startSearchAutomation = async () => {
     // set automation property as true.
     setBool({ ...bool, is_automating: true });
     console.log("Starting Search Automation");
+    let temp = updateUserStats({ ...userStats }, 1);
+    setUserStats(temp);
 
     let jokes = new Array();
     jokes = await getJokes(settings.count);
@@ -107,12 +116,15 @@ function Automation({ iframeRef, bool, setBool }) {
         ...prevSettings,
         searchLeft: settings.count - x,
       }));
+
       if (x < settings.count) {
         iframeRef.current.src = `https://www.bing.com/search?FORM=U523DF&PC=U523&q=${urlSet[x]}?`;
-        updateStats(2);
-        updateStats(3);
-        // stats.totalSearches++;
-        // stats.totalPointsMined += 3;
+
+        setUserStats((prevStats) => {
+          const updatedStats = updateUserStats({ ...prevStats }, 2, 3);
+          return updatedStats;
+        });
+        
         x++;
         setTimeout(sequence, settings.delay * 1000);
       }
