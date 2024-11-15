@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Navbar from "./components/common/Navbar";
 import Automation from "./components/automation/Automation";
