@@ -28,7 +28,7 @@ function Settings({ settings, updateSettings, bool }) {
             type="number"
             min={1}
             value={settings.count}
-            placeholder="Enter count"
+            placeholder="Enter Count"
             onChange={handleSearchCountInput}
           />
         </label>
