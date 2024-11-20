@@ -67,8 +67,8 @@ input[type="number"] {
   border-radius: 50%;
 }
 
-.user-stats{
-  background:linear-gradient(262.39deg, #2d2d2d 0.39%, #353535 99.61%);
+.user-stats {
+  background: linear-gradient(262.39deg, #2d2d2d 0.39%, #353535 99.61%);
   margin: 10px;
   border-radius: 8px;
 }
@@ -117,4 +117,9 @@ input[type="number"] {
   100% {
     rotate: 360deg;
   }
+}
+
+input[type="checkbox"] {
+  scale: 2;
+  border: none;
 }
