@@ -27,27 +27,29 @@ function App() {
       <Automation iframeRef={iframeRef} bool={bool} setBool={setBool} />
 
       <div className="checkboxes">
-        <label className="m-3 fs-5 fw-100" id="showStats">
+        <label className="m-3 fs-5 fw-100" htmlFor="showStatsCheckbox">
           My Stats
-          <input
-            type="checkbox"
-            className="m-2 checkbox"
-            onClick={(e) => {
-              setBool({ ...bool, showMyStats: e.target.checked });
-            }}
-          />
         </label>
+        <input
+          id="showStatsCheckbox"
+          type="checkbox"
+          className="m-2 checkbox"
+          onClick={(e) => {
+            setBool({ ...bool, showMyStats: e.target.checked });
+          }}
+        />
 
-        <label className="m-3 fs-5 fw-100" id="showSearchResults">
-          Show Search Results
-          <input
-            type="checkbox"
-            className="m-2 checkbox"
-            onClick={(e) => {
-              setBool({ ...bool, showSearchResult: e.target.checked });
-            }}
-          />
+        <label className="m-3 fs-5 fw-100" htmlFor="showSearchResultCheckBox">
+          Search Results
         </label>
+        <input
+          id="showSearchResultCheckBox"
+          type="checkbox"
+          className="m-2 checkbox"
+          onClick={(e) => {
+            setBool({ ...bool, showSearchResult: e.target.checked });
+          }}
+        />
         <p className="text-center">SHOW LOGS and know whats happening</p>
       </div>
 
