@@ -66,7 +66,7 @@ function Automation({ iframeRef, bool, setBool }) {
   useEffect(() => {
     // console.log("search left updated");
     if (settings.searchLeft == 0) {
-      props.setAutomationStatus(false);
+      setBool({ ...bool, is_automating: false });
     }
   }, [settings.searchLeft]);
 
@@ -124,24 +124,13 @@ function Automation({ iframeRef, bool, setBool }) {
           const updatedStats = updateUserStats({ ...prevStats }, 2, 3);
           return updatedStats;
         });
-        
+
         x++;
         setTimeout(sequence, settings.delay * 1000);
       }
     };
     sequence();
   };
-
-  const handleSearchComplete = useCallback(() => {
-    if (settings.searchLeft > 0) {
-      updateSettings({
-        ...settings,
-        searchLeft: settings.searchLeft - 1,
-      });
-      // Here, you would also trigger the actual search functionality
-      console.log("Performing search...");
-    }
-  }, [settings, updateSettings]);
 
   function openHideSettings() {
     setBool({ ...bool, showSettings: !bool.showSettings });
@@ -186,10 +175,7 @@ function Automation({ iframeRef, bool, setBool }) {
           </div>
         </div>
 
-        <MiningStats
-          settings={settings}
-          handleSearchComplete={handleSearchComplete}
-        />
+        <MiningStats settings={settings} bool={bool} />
       </div>
     </div>
   );
