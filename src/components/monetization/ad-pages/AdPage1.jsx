@@ -1,13 +1,24 @@
-import "../../../styles/ad-page.css";
 import { useEffect } from "react";
+import "../../../styles/ad-page.css";
 
 function AdPage1() {
+  // Create reusable components for each ad type
+  const renderAds = (path, className, count) => {
+    return Array(count)
+      .fill(null)
+      .map((_, index) => (
+        <iframe
+          key={`${className}-${index}`}
+          src={`/ads/adsterra/${path}`}
+          className={className}
+        />
+      ));
+  };
+
   useEffect(() => {
-    const startDelay = 3000;
-
-    const scrollSpeed = 30;
-
-    const scrollStep = 1;
+    const startDelay = 2000;
+    const scrollSpeed = 20;
+    const scrollStep = 2;
 
     let timeoutId;
     let intervalId;
@@ -37,107 +48,26 @@ function AdPage1() {
   }, []);
 
   return (
-    <div>
-      native-banners*12
-      <div className="native-banners-container">
-        <iframe
-          src="/ads/adsterra/native-banner"
-          class="native-banner"
-        ></iframe>
-        <iframe
-          src="/ads/adsterra/native-banner"
-          class="native-banner"
-        ></iframe>
-        <iframe
-          src="/ads/adsterra/native-banner"
-          class="native-banner"
-        ></iframe>
-      </div>
-      banners-300x250*8
-      <div className="banners-300x250">
-        <iframe
-          src="/ads/adsterra/banner-300-250"
-          class="banner-300x250"
-        ></iframe>{" "}
-        <iframe
-          src="/ads/adsterra/banner-300-250"
-          class="banner-300x250"
-        ></iframe>{" "}
-        <iframe
-          src="/ads/adsterra/banner-300-250"
-          class="banner-300x250"
-        ></iframe>{" "}
-        <iframe
-          src="/ads/adsterra/banner-300-250"
-          class="banner-300x250"
-        ></iframe>{" "}
-        <iframe
-          src="/ads/adsterra/banner-300-250"
-          class="banner-300x250"
-        ></iframe>{" "}
-        <iframe
-          src="/ads/adsterra/banner-300-250"
-          class="banner-300x250"
-        ></iframe>{" "}
-        <iframe
-          src="/ads/adsterra/banner-300-250"
-          class="banner-300x250"
-        ></iframe>{" "}
-        <iframe
-          src="/ads/adsterra/banner-300-250"
-          class="banner-300x250"
-        ></iframe>
-      </div>
-      banners-160-600*7
-      <div className="banners-160-600">
-        <iframe
-          src="/ads/adsterra/banner-160-600"
-          className="banner-160-600"
-        ></iframe>
-        <iframe
-          src="/ads/adsterra/banner-160-600"
-          className="banner-160-600"
-        ></iframe>
-        <iframe
-          src="/ads/adsterra/banner-160-600"
-          className="banner-160-600"
-        ></iframe>
-        <iframe
-          src="/ads/adsterra/banner-160-600"
-          className="banner-160-600"
-        ></iframe>
-        <iframe
-          src="/ads/adsterra/banner-160-600"
-          className="banner-160-600"
-        ></iframe>
-        <iframe
-          src="/ads/adsterra/banner-160-600"
-          className="banner-160-600"
-        ></iframe>
-        <iframe
-          src="/ads/adsterra/banner-160-600"
-          className="banner-160-600"
-        ></iframe>
-      </div>
-      banners-728-90*4
-      <div className="banners-728-90">
-        <iframe
-          src="/ads/adsterra/banner-728-90"
-          className="banner-728-90"
-        ></iframe>
-        <iframe
-          src="/ads/adsterra/banner-728-90"
-          className="banner-728-90"
-        ></iframe>
-        <iframe
-          src="/ads/adsterra/banner-728-90"
-          className="banner-728-90"
-        ></iframe>
-        <iframe
-          src="/ads/adsterra/banner-728-90"
-          className="banner-728-90"
-        ></iframe>
-      </div>
+    <div className="ad-page">
+      <section className="native-banners-container">
+        <h2>Native Banners</h2>
+        {renderAds("native-banner", "native-banner", 12)}
+      </section>
+
+      <section className="banners-300x250">
+        <h2>300x250 Banners</h2>
+        {renderAds("banner-300-250", "banner-300x250", 8)}
+      </section>
+
+      <section className="banners-160-600">
+        <h2>160x600 Banners</h2>
+        {renderAds("banner-160-600", "banner-160-600", 7)}
+      </section>
+
+      <section className="banners-728-90">
+        <h2>728x90 Banners</h2>
+        {renderAds("banner-728-90", "banner-728-90", 4)}
+      </section>
     </div>
   );
 }
