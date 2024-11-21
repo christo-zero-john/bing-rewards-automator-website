@@ -32,6 +32,7 @@ function AdDisplayOffcanvas({ adDisplayOffcanvasRef, settings, bool }) {
             <iframe
               src="/ads/p1"
               className="no-scrollbar overflow-auto m-0"
+              style={{ width: "100%", height: "100%" }}
             ></iframe>
           </div>
         </div>
