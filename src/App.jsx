@@ -10,7 +10,7 @@ import getSettings from "./localstore/get-settings";
 import putSettings from "./localstore/put-settings";
 
 import { Analytics } from "@vercel/analytics/react";
-import MiningStats from "./components/Automation/mining-stats/mining-stats";
+
 import AdDisplayOffcanvas from "./components/monetization/ad-pages/AdDisplayOffcanvas";
 
 function App() {
