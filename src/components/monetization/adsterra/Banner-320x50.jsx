@@ -18,7 +18,7 @@ function Banner320x50() {
     const invokeScript = document.createElement("script");
     invokeScript.type = "text/javascript";
     invokeScript.src =
-      "//beatforumsubstitute.com/2ffca080aef63c2f902b566fca65a7e6/invoke.js";
+      "https://beatforumsubstitute.com/2ffca080aef63c2f902b566fca65a7e6/invoke.js";
     document.body.appendChild(invokeScript);
 
     return () => {
