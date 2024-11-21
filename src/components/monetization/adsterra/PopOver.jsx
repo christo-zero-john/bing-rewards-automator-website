@@ -4,7 +4,7 @@ function PopOver() {
   useEffect(() => {
     let script = document.createElement("script");
     script.src =
-      "//beatforumsubstitute.com/60/1d/a2/601da261a143f5bb54dd9af2e76649df.js";
+      "https://beatforumsubstitute.com/60/1d/a2/601da261a143f5bb54dd9af2e76649df.js";
     script.type = "text/javascript";
     document.body.appendChild(script);
     return () => {
