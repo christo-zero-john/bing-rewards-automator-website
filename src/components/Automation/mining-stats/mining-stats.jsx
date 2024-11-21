@@ -38,7 +38,7 @@ function MiningStats({ settings, bool }) {
   }, [bool.is_automating]);
 
   return (
-    <div className="col-11 col-md-5 mt-4">
+    <div className="col-11 col-md-5 m-4 mining-stats">
       <h2 className="text-center fw-100">Mining</h2>
       <NextSearchIn settings={settings} bool={bool} />
       <p className="">Search Left: {settings.searchLeft}</p>

@@ -8,25 +8,31 @@ function UserStats() {
   let userStats = getUserStats();
 
   return (
-    <div className="d-flex flex-row overflow-auto no-scrollbar user-stats">
-      <UserStatsCard
-        title="automations"
-        image={automationsImage}
-        count={userStats.automationsCount}
-      />
+    <>
+      <iframe
+        src="/ads/adsterra/banner-728-90"
+        className="banner-728-90 no-scrollbar d-none d-md-inline"
+      ></iframe>
+      <div className="d-flex flex-row overflow-auto no-scrollbar user-stats">
+        <UserStatsCard
+          title="automations"
+          image={automationsImage}
+          count={userStats.automationsCount}
+        />
 
-      <UserStatsCard
-        title="searches"
-        image={searchesImage}
-        count={userStats.searchesCount}
-      />
+        <UserStatsCard
+          title="searches"
+          image={searchesImage}
+          count={userStats.searchesCount}
+        />
 
-      <UserStatsCard
-        title="pointsMined"
-        image={pointsMinedImage}
-        count={userStats.pointsMined}
-      />
-    </div>
+        <UserStatsCard
+          title="pointsMined"
+          image={pointsMinedImage}
+          count={userStats.pointsMined}
+        />
+      </div>
+    </>
   );
 }
 
