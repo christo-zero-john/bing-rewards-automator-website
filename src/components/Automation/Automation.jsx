@@ -1,6 +1,5 @@
-import { useState, useCallback, useEffect } from "react";
-import getSettings from "../../localstore/get-settings";
-import putSettings from "../../localstore/put-settings";
+import { useState, useEffect } from "react";
+
 import getJokes from "../../service-vendors/official-jokes-api";
 import updateStats from "../../modules/update-stats";
 import Settings from "../settings/Settings";
@@ -12,17 +11,16 @@ import MiningStats from "./mining-stats/mining-stats";
 
 import { getUserStats, updateUserStats } from "../../modules/manage/user-stats";
 
-function Automation({ iframeRef, bool, setBool }) {
+function Automation({
+  iframeRef,
+  bool,
+  setBool,
+  settings,
+  updateSettings,
+  showAdOffcanvas,
+  hideAdOffcanvas,
+}) {
   // localStorage.clear();
-
-  // Fetch settings from local storage
-  if (!getSettings()) {
-    console.log("Saving Settings to local storage");
-    putSettings({ count: 30, delay: 15 });
-  }
-
-  const [settings, updateSettings] = useState(getSettings());
-  console.log("settings", settings);
 
   const people = [
     "Yang Kai",
@@ -78,6 +76,8 @@ function Automation({ iframeRef, bool, setBool }) {
   const startSearchAutomation = async () => {
     // set automation property as true.
     setBool({ ...bool, is_automating: true });
+    showAdOffcanvas();
+
     console.log("Starting Search Automation");
     let temp = updateUserStats({ ...userStats }, 1);
     setUserStats(temp);
@@ -175,7 +175,13 @@ function Automation({ iframeRef, bool, setBool }) {
           </div>
         </div>
 
-        <MiningStats settings={settings} bool={bool} />
+        <div className="col-11 col-md-5">
+          <iframe
+            src="/ads/adsterra/banner-300-250"
+            frameborder="0"
+            className="banner-300x250 no-scrollbar mt-4"
+          ></iframe>
+        </div>
       </div>
     </div>
   );
