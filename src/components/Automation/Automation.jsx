@@ -7,7 +7,6 @@ import Settings from "../settings/Settings";
 import "../../styles/automations.css";
 import btnImage from "../../images/start-automation.png";
 import settingsImg from "../../images/settings.png";
-import MiningStats from "./mining-stats/mining-stats";
 
 import { getUserStats, updateUserStats } from "../../modules/manage/user-stats";
 
