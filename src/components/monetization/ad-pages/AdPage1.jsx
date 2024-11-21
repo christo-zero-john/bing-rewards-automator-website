@@ -16,9 +16,9 @@ function AdPage1() {
   };
 
   useEffect(() => {
-    const startDelay = 2000;
-    const scrollSpeed = 20;
-    const scrollStep = 2;
+    const startDelay = 3000;
+    const scrollSpeed = 400;
+    const scrollStep = 50;
 
     let timeoutId;
     let intervalId;
