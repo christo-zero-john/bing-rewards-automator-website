@@ -13,29 +13,42 @@ iframe {
   flex-wrap: wrap;
 }
 
+.ad-page {
+  position: relative;
+  width: 100%;
+}
+
+.offcanvas {
+  width: 100vw;
+  overflow: auto;
+}
+
+.offcanvas-body {
+  height: 100vh !important;
+  overflow-y: auto !important;
+  position: relative;
+}
+
 .native-banner {
   height: 500px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .banner-300x250 {
-  width: 320px;
-  height: 270px;
-  display: inline !important;
+  height: 250px;
+  width: 300px;
+  margin-bottom: 20px;
 }
 
 .banner-160-600 {
-  width: 170px;
-  height: 620px;
-  display: inline !important;
+  height: 600px;
+  width: 160px;
+  margin-bottom: 20px;
 }
 
 .banner-728-90 {
-  width: 738px;
-  height: 100px;
-  display: inline !important;
-}
-.banner-468-60 {
-  width: 350px;
-  height: 80px;
-  display: inline !important;
+  height: 90px;
+  width: 728px;
+  margin-bottom: 20px;
 }
