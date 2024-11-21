@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import "../../../boostrap/js/bootstrap.bundle";
+import { Offcanvas } from "bootstrap";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import MiningStats from "../../Automation/mining-stats/mining-stats";
 
 function AdDisplayOffcanvas({ adDisplayOffcanvasRef, settings, bool }) {
   useEffect(() => {
     let adOffcanvasDiv = document.getElementById("adOffcanvas");
-    let adOffcanvas = new bootstrap.Offcanvas(adOffcanvasDiv);
+    let adOffcanvas = new Offcanvas(adOffcanvasDiv);
     adDisplayOffcanvasRef.current = adOffcanvas;
   }, []);
 
