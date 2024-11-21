@@ -14,12 +14,12 @@ function AdDisplayOffcanvas({ adDisplayOffcanvasRef, settings, bool }) {
       <div className="">
         <div
           ref={adDisplayOffcanvasRef}
-          className="offcanvas ofcanvas-lg bg-dark text-light fw-100 show"
+          className="offcanvas ofcanvas-lg bg-dark text-light fw-100"
           tabIndex="-1"
           id="adOffcanvas"
           aria-labelledby="adOffcanvasLabel"
         >
-          <div className="offcanvas-header">
+          <div className="offcanvas-header sticky-top bg-dark">
             <h5 className="small" id="adOffcanvasLabel">
               While we mine your points, go through these advertisements or{" "}
               <span className="text-warning">Go AD Free</span>
