@@ -15,7 +15,7 @@ function AdDisplayOffcanvas({ adDisplayOffcanvasRef, settings, bool }) {
       <div className="">
         <div
           ref={adDisplayOffcanvasRef}
-          className="offcanvas ofcanvas-lg bg-dark text-light fw-100"
+          className="show offcanvas ofcanvas-lg bg-dark text-light fw-100"
           tabIndex="-1"
           id="adOffcanvas"
           aria-labelledby="adOffcanvasLabel"
