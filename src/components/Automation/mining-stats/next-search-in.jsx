@@ -26,8 +26,8 @@ function NextSearchIn({ settings, bool }) {
   }, [bool.is_automating]);
 
   return (
-    <div className="">
-      <p className="timeleft-contdown" ref={timerText}>
+    <div className="d-inline-block">
+      <p className="timeleft-contdown d-inline-block fs-2 mx-3 text-violet" ref={timerText}>
         0
       </p>
     </div>
