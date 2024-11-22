@@ -39,12 +39,20 @@ function MiningStats({ settings, bool }) {
 
   return (
     <div className="col-11 col-md-5 m-4 mining-stats">
-      <h2 className="text-center fw-100 bg-dark mining-title">Mining</h2>
+      <h2 className="text-center fw-100 bg-dark mining-title d-inline-block">
+        Mining
+      </h2>
       <NextSearchIn settings={settings} bool={bool} />
-      <p className="">Search Left: {settings.searchLeft}</p>
-      <p className="" ref={estimatedTimeRef}>
-        Estimated Time: {estimatedTime[0]} mins : {estimatedTime[1]} secs
-      </p>
+      <div className="">
+        <p className="d-inline-block px-3">
+          Search Left: {settings.searchLeft}
+        </p>
+        <p className="d-inline-block px-3" ref={estimatedTimeRef}>
+          Estimated Time:{" "}
+          <span className="text-orange">{estimatedTime[0]} mins </span>
+          <span className="text-aqua">{estimatedTime[1]} secs</span>
+        </p>
+      </div>
     </div>
   );
 }
