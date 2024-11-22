@@ -27,7 +27,11 @@ function Banner728x90() {
     };
   }, []);
 
-  return <div className="no-scrollbar">{/* Ad content will load here */}</div>;
+  return (
+    <div className="no-scrollbar banner-728-90">
+      {/* Ad content will load here */}
+    </div>
+  );
 }
 
 export default Banner728x90;
