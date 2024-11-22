@@ -39,7 +39,7 @@ function MiningStats({ settings, bool }) {
 
   return (
     <div className="col-11 col-md-5 m-4 mining-stats">
-      <h2 className="text-center fw-100">Mining</h2>
+      <h2 className="text-center fw-100 bg-dark">Mining</h2>
       <NextSearchIn settings={settings} bool={bool} />
       <p className="">Search Left: {settings.searchLeft}</p>
       <p className="" ref={estimatedTimeRef}>
