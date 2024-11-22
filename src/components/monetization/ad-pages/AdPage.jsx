@@ -12,7 +12,7 @@ function AdPage() {
     );
   };
 
-  return <div className="ad-page">{renderAds()}</div>;
+  return <div className="ad-page no-scrollbar">{renderAds()}</div>;
 }
 
 export default AdPage;
