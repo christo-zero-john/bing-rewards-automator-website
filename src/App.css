@@ -15,7 +15,6 @@ iframe {
   padding: 0;
   width: 101vw;
   height: 101vh;
-  scale: 0.95;
 }
 
 #count,
@@ -91,6 +90,7 @@ input[type="number"] {
     width: 70px;
     height: auto;
   }
+
   .global-stats-card {
     background: linear-gradient(262.39deg, #2d2d2d 0.39%, #484748 99.61%);
     padding: 20px;
@@ -100,17 +100,21 @@ input[type="number"] {
     box-shadow: 5px 5px 15px 1px #65656574;
     text-wrap: nowrap;
   }
+
   .global-stats-card section img {
     width: 70px;
     height: auto;
   }
+
   .global-stats-card section p {
     font-size: 20px;
   }
+
   .global-stats-card p {
     font-size: 32px;
     padding: 0 20px;
   }
+
   .timeleft-contdown {
     font-size: 52px;
     width: fit-content;
@@ -136,6 +140,24 @@ input[type="checkbox"] {
   border: none;
 }
 
-.offcanvas {
-  width: 100vw !important;
+
+
+.offcanvas-body {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px);
+  overflow-y: auto !important;
+}
+
+.mining-stats-wrapper {
+  flex-shrink: 0;
+}
+
+.ads-wrapper {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.mining-stats {
+  flex-shrink: 10;
 }
