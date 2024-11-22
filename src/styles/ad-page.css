@@ -18,17 +18,6 @@ iframe {
   width: 100%;
 }
 
-.offcanvas {
-  width: 100vw;
-  overflow: auto;
-}
-
-.offcanvas-body {
-  height: 100vh !important;
-  overflow-y: auto !important;
-  position: relative;
-}
-
 .native-banner {
   height: 500px;
   width: 100%;
@@ -36,19 +25,25 @@ iframe {
 }
 
 .banner-300x250 {
-  height: 250px;
-  width: 300px;
+  height: 270px;
+  width: 320px;
   margin-bottom: 20px;
 }
 
 .banner-160-600 {
-  height: 600px;
-  width: 160px;
+  height: 620px;
+  width: 180px;
   margin-bottom: 20px;
 }
 
 .banner-728-90 {
-  height: 90px;
-  width: 728px;
+  height: 100px;
+  width: 738px;
+  margin-bottom: 20px;
+}
+
+.banner-468-60{
+  height: 70px;
+  width: 478px;
   margin-bottom: 20px;
 }
