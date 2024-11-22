@@ -28,7 +28,7 @@ function Banner468x60() {
   }, []);
 
   return (
-    <div className="no-scrollbar bg-transparent">
+    <div className="no-scrollbar bg-transparent banner-468-60">
       {/* Ad content will load here */}
     </div>
   );
