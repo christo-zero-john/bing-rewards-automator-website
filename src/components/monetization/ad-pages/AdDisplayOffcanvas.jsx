@@ -15,24 +15,24 @@ function AdDisplayOffcanvas({ adDisplayOffcanvasRef, settings, bool }) {
       <div className="">
         <div
           ref={adDisplayOffcanvasRef}
-          className="show offcanvas ofcanvas-lg bg-dark text-light fw-100"
+          className="show bg-dark text-light fw-100 offcanvas offcanvas-start"
           tabIndex="-1"
           id="adOffcanvas"
           aria-labelledby="adOffcanvasLabel"
         >
-          <div className="offcanvas-header sticky-top bg-dark">
-            <h5 className="small" id="adOffcanvasLabel">
-              While we mine your points, go through these advertisements or{" "}
-              <span className="text-warning">Go AD Free</span>
+          <div className="offcanvas-header">
+            <h5 className="offcanvas-title" id="adOffcanvasLabel small">
+              While we mine your points, watch soem ads or{" "}
+              <a href="/get-premium" className="link-warning">
+                Go AD Free
+              </a>
             </h5>
           </div>
-          <div className="offcanvas-body no-scrollbar p-0">
+          <div className="offcanvas-body no-scrollbar">
             <MiningStats settings={settings} bool={bool} />
-
             <iframe
-              src="/ads/p1"
-              className="no-scrollbar overflow-auto m-0"
-              style={{ width: "100%", height: "100%" }}
+              src="/ads/adsterra/native-banner"
+              className=" no-scrollbar m-3 native-banner"
             ></iframe>
           </div>
         </div>
