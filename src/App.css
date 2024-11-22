@@ -71,12 +71,7 @@ input[type="number"] {
 }
 
 .timeleft-contdown {
-  font-size: 52px;
-  width: fit-content;
-  padding: 20px 25px;
-  margin: 30px auto;
-  border: 1px solid #fff;
-  border-radius: 50%;
+
 }
 
 .user-stats {
