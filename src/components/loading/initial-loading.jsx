@@ -8,7 +8,7 @@ function Loading() {
     setTimeout(() => {
       document.getElementById("continue-btn").disabled = false;
       return () => clearTimeout(timer);
-    }, 1000);
+    }, 10000);
   }, []);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function Loading() {
     <div
       className={`${
         !showLoading && "hidden"
-      } initial-loading w-100 h-100 bg-dark overflow-auto no-scrollbar`}
+      } fixed-top initial-loading w-100 h-100 bg-dark overflow-auto no-scrollbar col-12`}
     >
       <h2 className="fs-6 fw-100 p-2 text-center text-capitalize">
         Scrolldown and click <span className="text-info">continue</span> or
@@ -38,11 +38,15 @@ function Loading() {
       ></iframe>
       <iframe
         src="/ads/adsterra/banner-468-60"
-        className="d-none d-md-block banner-468-60 no-scrollbar"
+        className="banner-468-60 no-scrollbar"
+      ></iframe>{" "}
+      <iframe
+        src="/ads/adsterra/banner-468-60"
+        className="banner-468-60 no-scrollbar"
       ></iframe>
       <iframe
         src="/ads/adsterra/banner-468-60"
-        className="d-none d-md-block banner-468-60 no-scrollbar"
+        className="banner-468-60 no-scrollbar"
       ></iframe>
       <iframe
         src="/ads/adsterra/banner-468-60"
@@ -50,11 +54,11 @@ function Loading() {
       ></iframe>{" "}
       <iframe
         src="/ads/adsterra/banner-468-60"
-        className="banner-468-60 no-scrollbar d-none d-md-inline"
+        className="banner-468-60 no-scrollbar"
       ></iframe>{" "}
       <iframe
         src="/ads/adsterra/banner-468-60"
-        className="banner-468-60 no-scrollbar d-none d-md-inline "
+        className="banner-468-60 no-scrollbar "
       ></iframe>
       <iframe
         src="/ads/adsterra/banner-468-60"
@@ -77,7 +81,7 @@ function Loading() {
         className="banner-468-60 no-scrollbar"
       ></iframe>
       <div className="text-capitalize small p-3">
-        Wait 10 seconds and click continue
+        Wait for all AD's to load. Then click Continue
         <button
           id="continue-btn"
           className="btn btn-info float-end"
