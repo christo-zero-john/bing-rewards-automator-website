@@ -17,7 +17,7 @@ function NativeBanner() {
 
   return (
     <div
-      className="no-scrollbar native-banner"
+      className="no-scrollbar"
       id="container-702b3c3e998058f2e03bcbe99aca826b"
     ></div>
   );
