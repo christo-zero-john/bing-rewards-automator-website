@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/common/Navbar";
 import Automation from "./components/Automation/Automation";
@@ -42,8 +42,9 @@ function App() {
     showMyStats: false,
   });
 
-  useState(() => {
+  useEffect(() => {
     document.addEventListener("DOMContentLoaded", () => {
+      console.log("DOM loaded");
       const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
           const adContainer = [...mutation.addedNodes].find(
@@ -59,7 +60,11 @@ function App() {
 
       observer.observe(document.body, { childList: true, subtree: true });
     });
+
+    const iframes = document.getElementsByTagName("iframe");
+    console.log(iframes);
   }, []);
+
   return (
     <div className="bg-dark text-light text-uppercase en-Oxanium position-relative min-vh-100">
       <Loading />
@@ -69,8 +74,6 @@ function App() {
         bool={bool}
       />
       <div className="content-wrapper">
-        {" "}
-        {/* Add wrapper for main content */}
         <Analytics />
         <Navbar />
         <Visitors />
