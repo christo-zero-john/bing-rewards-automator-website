@@ -1,5 +1,12 @@
 iframe {
-  overflow: hidden;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-block;
+}
+
+img {
+  display: inline-block;
+  text-align: center;
 }
 
 .banners-300x250,
@@ -13,37 +20,33 @@ iframe {
   flex-wrap: wrap;
 }
 
-.ad-page {
+/* .ad-page {
   position: relative;
   width: 100%;
-}
+} */
+
 
 .native-banner {
   height: 500px;
   width: 100%;
-  margin-bottom: 20px;
 }
 
 .banner-300x250 {
   height: 270px;
   width: 320px;
-  margin-bottom: 20px;
 }
 
 .banner-160-600 {
   height: 620px;
   width: 180px;
-  margin-bottom: 20px;
 }
 
 .banner-728-90 {
   height: 100px;
   width: 738px;
-  margin-bottom: 20px;
 }
 
-.banner-468-60{
+.banner-468-60 {
   height: 70px;
   width: 478px;
-  margin-bottom: 20px;
 }
