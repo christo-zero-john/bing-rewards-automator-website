@@ -1,8 +1,25 @@
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  width: 5px;
+}
+
 div,
 a {
-  background-color: #2d2d2d;
+  background-color: #212529;
   margin: 0;
   padding: 0;
+}
+
+button,
+img,
+p,
+h1,
+h2,
+h3 {
+  background: none;
 }
 
 html {
@@ -38,7 +55,7 @@ label {
 }
 
 .global-stats-card {
-  background: linear-gradient(262.39deg, #2d2d2d 0.39%, #484748 99.61%);
+  background: linear-gradient(262.39deg, #212529 0.39%, #484748 99.61%);
   padding: 10px;
   margin: 15px;
   border-radius: 8px;
@@ -73,9 +90,16 @@ input[type="number"] {
 }
 
 .user-stats {
-  background: linear-gradient(262.39deg, #2d2d2d 0.39%, #353535 99.61%);
+  background: linear-gradient(262.39deg, #212529 0.39%, #353535 99.61%);
   margin: 10px;
   border-radius: 8px;
+}
+
+.mining-stats{
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  text-align: center;
 }
 
 /* Styles for medium screens */
@@ -84,8 +108,9 @@ input[type="number"] {
     width: 70px;
     height: auto;
   }
+
   .global-stats-card {
-    background: linear-gradient(262.39deg, #2d2d2d 0.39%, #484748 99.61%);
+    background: linear-gradient(262.39deg, #212529 0.39%, #484748 99.61%);
     padding: 20px;
     margin: 30px;
     border-radius: 8px;
@@ -93,17 +118,22 @@ input[type="number"] {
     box-shadow: 5px 5px 15px 1px #65656574;
     text-wrap: nowrap;
   }
+
   .global-stats-card section img {
     width: 70px;
     height: auto;
   }
+
   .global-stats-card section p {
     font-size: 20px;
   }
+
   .global-stats-card p {
     font-size: 32px;
     padding: 0 20px;
   }
+
+  /*   
   .timeleft-contdown {
     font-size: 52px;
     width: fit-content;
@@ -111,7 +141,7 @@ input[type="number"] {
     margin: 30px auto;
     border: 1px solid #fff;
     border-radius: 50%;
-  }
+  } */
 }
 
 /* Animations */
