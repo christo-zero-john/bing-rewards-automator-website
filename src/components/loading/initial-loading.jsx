@@ -8,7 +8,7 @@ function Loading() {
     setTimeout(() => {
       document.getElementById("continue-btn").disabled = false;
       return () => clearTimeout(timer);
-    }, 10000);
+    }, 100);
   }, []);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function Loading() {
     <div
       className={`${
         !showLoading && "hidden"
-      } fixed-top initial-loading w-100 h-100 bg-dark overflow-auto no-scrollbar col-12`}
+      } bg-dark fixed-top initial-loading w-100 h-100 bg-dark overflow-auto no-scrollbar col-12`}
     >
       <h2 className="fs-6 fw-100 p-2 text-center text-capitalize">
         Scrolldown and click <span className="text-info">continue</span> or
