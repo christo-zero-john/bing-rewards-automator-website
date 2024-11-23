@@ -38,7 +38,7 @@ function MiningStats({ settings, bool }) {
   }, [bool.is_automating]);
 
   return (
-    <div className="col-11 col-md-5 m-4 mining-stats">
+    <div className="col-11 col-md-5 mining-stats">
       <h2 className="text-center fw-100 bg-dark mining-title d-inline-block">
         Mining
       </h2>
