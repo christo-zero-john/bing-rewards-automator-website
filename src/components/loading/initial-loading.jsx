@@ -32,54 +32,7 @@ function Loading() {
           Buy Premium
         </a>
       </h2>
-      <iframe
-        src="/ads/adsterra/banner-468-60"
-        className="banner-468-60 no-scrollbar"
-      ></iframe>
-      <iframe
-        src="/ads/adsterra/banner-468-60"
-        className="banner-468-60 no-scrollbar"
-      ></iframe>{" "}
-      <iframe
-        src="/ads/adsterra/banner-468-60"
-        className="banner-468-60 no-scrollbar"
-      ></iframe>
-      <iframe
-        src="/ads/adsterra/banner-468-60"
-        className="banner-468-60 no-scrollbar"
-      ></iframe>
-      <iframe
-        src="/ads/adsterra/banner-468-60"
-        className="banner-468-60 no-scrollbar"
-      ></iframe>{" "}
-      <iframe
-        src="/ads/adsterra/banner-468-60"
-        className="banner-468-60 no-scrollbar"
-      ></iframe>{" "}
-      <iframe
-        src="/ads/adsterra/banner-468-60"
-        className="banner-468-60 no-scrollbar "
-      ></iframe>
-      <iframe
-        src="/ads/adsterra/banner-468-60"
-        className="banner-468-60 no-scrollbar"
-      ></iframe>
-      <iframe
-        src="/ads/adsterra/banner-468-60"
-        className="banner-468-60 no-scrollbar"
-      ></iframe>{" "}
-      <iframe
-        src="/ads/adsterra/banner-468-60"
-        className="banner-468-60 no-scrollbar"
-      ></iframe>{" "}
-      <iframe
-        src="/ads/adsterra/banner-468-60"
-        className="banner-468-60 no-scrollbar"
-      ></iframe>{" "}
-      <iframe
-        src="/ads/adsterra/banner-468-60"
-        className="banner-468-60 no-scrollbar"
-      ></iframe>
+      <iframe src="/ads" className="mx-auto col-11 hd-100 no-scrollbar"></iframe>
       <div className="text-capitalize small p-3">
         Wait for all AD's to load. Then click Continue
         <button
