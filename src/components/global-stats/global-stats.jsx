@@ -3,15 +3,28 @@ import deviceImage from "../../images/devices-count.png";
 import automationsImage from "../../images/automations-count.png";
 import searchesImage from "../../images/searches-count.png";
 import pointsMinedImage from "../../images/start-automation.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import {
+  updateGlobalStats,
+  fetchGlobalStats,
+  syncGlobalStats,
+  getLastSynced,
+  putLastSynced,
+} from "../../modules/manage/global-stats";
 
 function GlobalStats() {
-  let count = {
+  const [count, setCount] = useState({
     deviceCount: 210,
     automationsCount: 2100,
     searchesCount: 2100,
     pointsMined: 2100,
-  };
+  });
+
+  useState(() => {
+    if (!getLastSynced()) {
+      localStorage.setItem("last-synced", JSON.stringify());
+    }
+  }, []);
 
   return (
     <div className="d-flex flex-row overflow-auto no-scrollbar">
