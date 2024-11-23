@@ -31,8 +31,8 @@ function AdDisplayOffcanvas({ adDisplayOffcanvasRef, settings, bool }) {
           <div className="offcanvas-body no-scrollbar">
             <MiningStats settings={settings} bool={bool} />
             <iframe
-              src="/ads/adsterra/native-banner"
-              className=" no-scrollbar m-3 native-banner"
+              src="/ads"
+              className="no-scrollbar m-3 native-banner hd-100 wd-100"
             ></iframe>
           </div>
         </div>
