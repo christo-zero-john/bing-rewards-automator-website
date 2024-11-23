@@ -18,7 +18,7 @@ function Banner160x600() {
     const invokeScript = document.createElement("script");
     invokeScript.type = "text/javascript";
     invokeScript.src =
-      "//beatforumsubstitute.com/fa3cc7cd086647141ae6dbfe8be422ac/invoke.js";
+      "https://beatforumsubstitute.com/fa3cc7cd086647141ae6dbfe8be422ac/invoke.js";
     document.body.appendChild(invokeScript);
 
     return () => {
@@ -27,7 +27,7 @@ function Banner160x600() {
     };
   }, []);
 
-  return <div className="no-scrollbar">{/* Ad content will load here */}</div>;
+  return <></>;
 }
 
 export default Banner160x600;

@@ -7,7 +7,6 @@ import Settings from "../settings/Settings";
 import "../../styles/automations.css";
 import btnImage from "../../images/start-automation.png";
 import settingsImg from "../../images/settings.png";
-import MiningStats from "./mining-stats/mining-stats";
 
 import { getUserStats, updateUserStats } from "../../modules/manage/user-stats";
 
@@ -175,10 +174,10 @@ function Automation({
           </div>
         </div>
 
-        <div className="col-11 col-md-5">
+        <div className="col-12 col-md-5">
           <iframe
             src="/ads/adsterra/banner-300-250"
-            frameborder="0"
+            
             className="banner-300x250 no-scrollbar mt-4"
           ></iframe>
         </div>

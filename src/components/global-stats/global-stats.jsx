@@ -3,43 +3,95 @@ import deviceImage from "../../images/devices-count.png";
 import automationsImage from "../../images/automations-count.png";
 import searchesImage from "../../images/searches-count.png";
 import pointsMinedImage from "../../images/start-automation.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import {
+  updateGlobalStats,
+  fetchGlobalStats,
+  syncGlobalStats,
+  getLastSynced,
+  putLastSynced,
+  GlobalStatsObj,
+} from "../../modules/manage/global-stats";
 
 function GlobalStats() {
-  let count = {
+  const [globalStats, setGlobalStats] = useState({
     deviceCount: 210,
     automationsCount: 2100,
     searchesCount: 2100,
     pointsMined: 2100,
-  };
+  });
+
+  useEffect(() => {
+    let temp = getLastSynced();
+    console.log(temp);
+    setGlobalStats(temp);
+  }, []);
 
   return (
     <div className="d-flex flex-row overflow-auto no-scrollbar">
       <GlobalStatsCard
         title="devices"
         image={deviceImage}
-        count={count.deviceCount}
+        globalStats={globalStats.deviceCount}
       />
 
       <GlobalStatsCard
         title="automations"
         image={automationsImage}
-        count={count.automationsCount}
+        globalStats={globalStats.automationsCount}
       />
 
       <GlobalStatsCard
         title="searches"
         image={searchesImage}
-        count={count.searchesCount}
+        globalStats={globalStats.searchesCount}
       />
 
       <GlobalStatsCard
         title="pointsMined"
         image={pointsMinedImage}
-        count={count.pointsMined}
+        globalStats={globalStats.pointsMined}
       />
     </div>
   );
 }
 
 export default GlobalStats;
+
+
+Angane kore courses njangal nokki, athokke olla colleges nokki pakshe amost ella collegs ilum seat ellam theernnu.
+
+Ath august last week-september first week okke aarnnu samayam. Appo colleges start cheyyenda samayavarnnu. Ath karanam elladethum NRI seats ulppade reserved aayi
+
+Angane irikkumbo aan ente cousin chettanod amma ente variety interest ne kurich parayunne
+
+Cousin nn parayumbo ammayide mon. 
+
+Appo chettayi paranju enkil IT field nokkan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+

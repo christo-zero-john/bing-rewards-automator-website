@@ -12,7 +12,7 @@ function NextSearchIn({ settings, bool }) {
       console.log("Automation true");
       let delay = settings.delay;
       let CintervalId = setInterval(() => {
-        console.log(0, timerText.current.textContent);
+        // console.log(0, timerText.current.textContent);
         timerText.current.innerHTML = delay--;
         if (settings.searchLeft == 0) {
           clearInterval(CintervalId);
@@ -26,8 +26,8 @@ function NextSearchIn({ settings, bool }) {
   }, [bool.is_automating]);
 
   return (
-    <div className="">
-      <p className="timeleft-contdown" ref={timerText}>
+    <div className="d-inline-block">
+      <p className="timeleft-contdown d-inline-block fs-5 mx-3 text-violet" ref={timerText}>
         0
       </p>
     </div>

@@ -1,5 +1,11 @@
 iframe {
-  overflow: hidden;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+img {
+  display: inline-block;
+  text-align: center;
 }
 
 .banners-300x250,
@@ -13,29 +19,43 @@ iframe {
   flex-wrap: wrap;
 }
 
+/* .ad-page {
+  position: relative;
+  width: 100%;
+} */
+
 .native-banner {
-  height: 500px;
+  height: 370px;
+  width: 100vw;
 }
 
 .banner-300x250 {
-  width: 320px;
-  height: 270px;
-  display: inline !important;
+  height: 250px;
+  width: 300px;
+}
+
+.banner-320x50 {
+  height: 70px;
+  width: 350px;
 }
 
 .banner-160-600 {
-  width: 170px;
   height: 620px;
-  display: inline !important;
+  width: 180px;
 }
 
 .banner-728-90 {
-  width: 738px;
   height: 100px;
-  display: inline !important;
+  width: 728px !important;
 }
+
 .banner-468-60 {
-  width: 350px;
-  height: 80px;
-  display: inline !important;
+  height: 70px;
+  width: 478px;
+}
+
+@media (min-width: 768px) {
+  .native-banner {
+    height: 300px;
+  }
 }

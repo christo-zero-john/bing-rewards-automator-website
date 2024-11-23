@@ -8,20 +8,6 @@ function Visitors() {
         <AllTimeVisitors />
         <DailyVisitors />
       </div>
-      <div className="d-inline">
-        <iframe
-          src="/ads/adsterra/banner-468-60"
-          className="banner-468-60 no-scrollbar wd-30"
-        ></iframe>{" "}
-        <iframe
-          src="/ads/adsterra/banner-468-60"
-          className="banner-468-60 no-scrollbar d-none d-md-inline"
-        ></iframe>{" "}
-        <iframe
-          src="/ads/adsterra/banner-468-60"
-          className="banner-468-60 no-scrollbar d-none d-md-inline "
-        ></iframe>
-      </div>
     </>
   );
 }
