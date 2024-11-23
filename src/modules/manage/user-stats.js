@@ -1,9 +1,4 @@
 function updateUserStats(currentStats, ...ctx) {
-  //   let userStats = {
-  //     automationsCount: 0,
-  //     searchesCount: 0,
-  //     pointsMined: 0,
-  //   };
   ctx.forEach((item) => {
     switch (item) {
       case 1: {
