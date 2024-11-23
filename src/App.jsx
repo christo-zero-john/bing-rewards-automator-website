@@ -42,6 +42,24 @@ function App() {
     showMyStats: false,
   });
 
+  useState(() => {
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          const adContainer = [...mutation.addedNodes].find(
+            (node) => node.id && node.id.startsWith("atContainer-")
+          );
+          if (adContainer) {
+            adContainer.style.backgroundColor = "#212529";
+            adContainer.style.color = "#fff";
+            adContainer.style.margin = "0";
+          }
+        });
+      });
+
+      observer.observe(document.body, { childList: true, subtree: true });
+    });
+  }, []);
   return (
     <div className="bg-dark text-light text-uppercase en-Oxanium position-relative min-vh-100">
       <Loading />
