@@ -10,20 +10,21 @@ import {
   syncGlobalStats,
   getLastSynced,
   putLastSynced,
+  GlobalStatsObj,
 } from "../../modules/manage/global-stats";
 
 function GlobalStats() {
-  const [count, setCount] = useState({
+  const [globalStats, setGlobalStats] = useState({
     deviceCount: 210,
     automationsCount: 2100,
     searchesCount: 2100,
     pointsMined: 2100,
   });
 
-  useState(() => {
-    if (!getLastSynced()) {
-      localStorage.setItem("last-synced", JSON.stringify());
-    }
+  useEffect(() => {
+    let temp = getLastSynced();
+    console.log(temp);
+    setGlobalStats(temp);
   }, []);
 
   return (
@@ -31,25 +32,25 @@ function GlobalStats() {
       <GlobalStatsCard
         title="devices"
         image={deviceImage}
-        count={count.deviceCount}
+        globalStats={globalStats.deviceCount}
       />
 
       <GlobalStatsCard
         title="automations"
         image={automationsImage}
-        count={count.automationsCount}
+        globalStats={globalStats.automationsCount}
       />
 
       <GlobalStatsCard
         title="searches"
         image={searchesImage}
-        count={count.searchesCount}
+        globalStats={globalStats.searchesCount}
       />
 
       <GlobalStatsCard
         title="pointsMined"
         image={pointsMinedImage}
-        count={count.pointsMined}
+        globalStats={globalStats.pointsMined}
       />
     </div>
   );
