@@ -27,11 +27,7 @@ function Banner320x50() {
     };
   }, []);
 
-  return (
-    <div className="no-scrollbar banner-320-50 bg-transparent">
-      {/* Ad content will load here */}
-    </div>
-  );
+  return <></>;
 }
 
 export default Banner320x50;
