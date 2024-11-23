@@ -27,7 +27,7 @@ function Banner300x250() {
     };
   }, []);
 
-  return <div className="no-scrollbar banner-300-250 bg-transparent">{/* Ad content will load here */}</div>;
+  return <></>;
 }
 
 export default Banner300x250;
