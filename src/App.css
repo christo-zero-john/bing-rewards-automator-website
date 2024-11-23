@@ -1,3 +1,10 @@
+div,
+a {
+  background-color: #2d2d2d;
+  margin: 0;
+  padding: 0;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -8,14 +15,6 @@ html {
     overflow: auto;
     scroll-behavior: auto;
   }
-}
-
-iframe {
-  margin: 0;
-  padding: 0;
-  width: 101vw;
-  height: 101vh;
-  scale: 0.95;
 }
 
 #count,
@@ -71,7 +70,6 @@ input[type="number"] {
 }
 
 .timeleft-contdown {
-
 }
 
 .user-stats {
