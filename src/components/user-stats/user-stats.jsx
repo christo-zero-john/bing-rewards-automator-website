@@ -17,19 +17,19 @@ function UserStats() {
         <UserStatsCard
           title="automations"
           image={automationsImage}
-          count={userStats.automationsCount}
+          count={userStats.totalTimesAutomated}
         />
 
         <UserStatsCard
           title="searches"
           image={searchesImage}
-          count={userStats.searchesCount}
+          count={userStats.totalSearches}
         />
 
         <UserStatsCard
           title="pointsMined"
           image={pointsMinedImage}
-          count={userStats.pointsMined}
+          count={userStats.totalPointsMined}
         />
       </div>
     </>
