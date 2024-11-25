@@ -2,10 +2,9 @@ import GlobalStatsCard from "./stats-card";
 import deviceImage from "../../images/devices-count.png";
 import automationsImage from "../../images/automations-count.png";
 import searchesImage from "../../images/searches-count.png";
-import pointsMinedImage from "../../images/start-automation.png";
+import totalPointsMinedImage from "../../images/start-automation.png";
 import { useEffect, useState } from "react";
 import {
-  updateGlobalStats,
   fetchGlobalStats,
   syncGlobalStats,
   getLastSynced,
@@ -15,42 +14,45 @@ import {
 
 function GlobalStats() {
   const [globalStats, setGlobalStats] = useState({
-    deviceCount: 210,
-    automationsCount: 2100,
-    searchesCount: 2100,
-    pointsMined: 2100,
+    totalDevices: 0,
+    totalTimesAutomated: 0,
+    totalSearches: 0,
+    totalPointsMined: 0,
   });
 
   useEffect(() => {
-    let temp = getLastSynced();
-    console.log(temp);
-    setGlobalStats(temp);
+    let lastSynced = getLastSynced();
+    // console.log(lastSynced);
+    fetchGlobalStats().then((data) => {
+      // console.log(data);
+      setGlobalStats(data);
+    });
   }, []);
 
   return (
     <div className="d-flex flex-row overflow-auto no-scrollbar">
       <GlobalStatsCard
+        title="totalPointsMined"
+        image={totalPointsMinedImage}
+        count={globalStats.totalPointsMined}
+      />
+
+      <GlobalStatsCard
         title="devices"
         image={deviceImage}
-        globalStats={globalStats.deviceCount}
+        count={globalStats.totalDevices}
       />
 
       <GlobalStatsCard
         title="automations"
         image={automationsImage}
-        globalStats={globalStats.automationsCount}
+        count={globalStats.totalTimesAutomated}
       />
 
       <GlobalStatsCard
         title="searches"
         image={searchesImage}
-        globalStats={globalStats.searchesCount}
-      />
-
-      <GlobalStatsCard
-        title="pointsMined"
-        image={pointsMinedImage}
-        globalStats={globalStats.pointsMined}
+        count={globalStats.totalSearches}
       />
     </div>
   );
