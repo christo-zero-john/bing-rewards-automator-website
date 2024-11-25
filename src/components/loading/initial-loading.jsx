@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Loading() {
-  const [showLoading, setShowLoading] = useState(true);
+  const loadingRef = useRef(null);
 
   useEffect(() => {
     document.getElementById("continue-btn").disabled = true;
@@ -11,20 +11,16 @@ function Loading() {
     }, 100);
   }, []);
 
-  useEffect(() => {
-    console.log(showLoading);
-  }, [showLoading]);
-
   function hideLoading() {
     console.log("Hiding loader");
-    setShowLoading(false);
+
+    loadingRef.current.remove();
   }
 
   return (
     <div
-      className={`${
-        !showLoading && "hidden"
-      } bg-dark fixed-top initial-loading w-100 h-100 bg-dark overflow-auto no-scrollbar col-12`}
+      ref={loadingRef}
+      className={`bg-dark fixed-top initial-loading w-100 h-100 bg-dark overflow-auto no-scrollbar col-12`}
     >
       <h2 className="fs-6 fw-100 p-2 text-center text-capitalize">
         Scrolldown and click <span className="text-info">continue</span> or
@@ -32,7 +28,10 @@ function Loading() {
           Buy Premium
         </a>
       </h2>
-      <iframe src="/ads" className="mx-auto col-11 hd-100 no-scrollbar"></iframe>
+      <iframe
+        src="/ads"
+        className="mx-auto col-11 hd-100 no-scrollbar"
+      ></iframe>
       <div className="text-capitalize small p-3">
         Wait for all AD's to load. Then click Continue
         <button
