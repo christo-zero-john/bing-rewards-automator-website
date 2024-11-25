@@ -21,15 +21,15 @@ function updateUserStats(currentStats, ...ctx) {
 
 function getUserStats() {
   let userStatTemplate = {
-    automationsCount: 0,
-    searchesCount: 0,
-    pointsMined: 0,
+    totalTimesAutomated: 0,
+    totalSearches: 0,
+    totalPointsMined: 0,
     lastLogin: new Date(),
   };
 
-  let userStas = JSON.parse(localStorage.getItem("user-stats"));
-  if (userStas) {
-    return userStas;
+  let userStats = JSON.parse(localStorage.getItem("user-stats"));
+  if (userStats) {
+    return userStats;
   } else {
     putUserStats(userStatTemplate);
     return userStatTemplate;
