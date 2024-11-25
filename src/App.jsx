@@ -13,6 +13,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 import AdDisplayOffcanvas from "./components/monetization/ad-pages/AdDisplayOffcanvas";
 import Loading from "./components/loading/initial-loading";
+import { syncGlobalStats } from "./modules/manage/global-stats";
 
 function App() {
   // localStorage.clear();
@@ -43,26 +44,7 @@ function App() {
   });
 
   useEffect(() => {
-    document.addEventListener("DOMContentLoaded", () => {
-      console.log("DOM loaded");
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          const adContainer = [...mutation.addedNodes].find(
-            (node) => node.id && node.id.startsWith("atContainer-")
-          );
-          if (adContainer) {
-            adContainer.style.backgroundColor = "#212529";
-            adContainer.style.color = "#fff";
-            adContainer.style.margin = "0";
-          }
-        });
-      });
-
-      observer.observe(document.body, { childList: true, subtree: true });
-    });
-
-    const iframes = document.getElementsByTagName("iframe");
-    console.log(iframes);
+    syncGlobalStats();
   }, []);
 
   return (

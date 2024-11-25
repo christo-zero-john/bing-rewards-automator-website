@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 import getJokes from "../../service-vendors/official-jokes-api";
-import updateStats from "../../modules/update-stats";
 import Settings from "../settings/Settings";
 
 import "../../styles/automations.css";

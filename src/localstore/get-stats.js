@@ -1,5 +1,4 @@
 function getStats() {
-  console.log("Get stats called");
   try {
     return JSON.parse(localStorage.getItem("stats"));
   } catch (error) {
